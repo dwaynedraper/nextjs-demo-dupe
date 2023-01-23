@@ -23,6 +23,8 @@
     "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.3.0"
+    "babel-loader": "^8.3.0",
+    "eslint": "^8.32.0",
+    "eslint-config-next": "^13.1.5"
   }
 }
