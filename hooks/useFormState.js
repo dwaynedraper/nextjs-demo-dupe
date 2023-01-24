@@ -6,6 +6,10 @@ import { useToggle } from "@/hooks/useToggle";
  * NOTE: This only works for flat objects. Nested objects have not been implemented.
  * @param initialState An object that represents the initial state of the form.
  * @returns [object, (event: React.ChangeEvent<HTMLInputElement>) => void] - The first value is the state of the form, the second value is a function to update the state of the form.
+ *
+ * Example:
+ * const [formState, handleChange] = useFormState({ name: "", email: "" , address: ""});
+ *
  */
 export function useFormState(initialState) {
   const [formState, setFormState] = useState(initialState);
