@@ -1,5 +1,4 @@
-import Footer from "../composite/Footer";
-import NavBar from "../composite/NavBar";
+import Footer from "@/components/composite/Footer";
 
 const account = [
   { value: "Account", href: "#" },
@@ -22,16 +21,15 @@ const getInTouch = [
   { value: "Schedule a Meeting", href: "#" },
 ];
 
-export default function Layout(props) {
-  return (
-    <div className='bg-white min-vh-100 d-flex flex-column justify-content-between'>
-      <NavBar />
-      <main>{props.children}</main>
-      <Footer
-        account={account}
-        exploreArkane={exploreArkane}
-        getInTouch={getInTouch}
-      />
-    </div>
-  );
-}
+export default {
+  title: "Composite/Footer",
+  component: Footer,
+};
+
+export const FooterComponent = () => (
+  <Footer
+    account={account}
+    exploreArkane={exploreArkane}
+    getInTouch={getInTouch}
+  />
+);

@@ -1,7 +1,7 @@
 import NavBar from "@/components/composite/NavBar";
 
 export default {
-  title: "Components/NavBar",
+  title: "Composite/NavBar",
   component: NavBar,
 };
 

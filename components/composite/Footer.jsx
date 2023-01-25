@@ -1,167 +1,73 @@
 import React from "react";
+import { BsLinkedin, BsFacebook, BsTwitter } from "react-icons/bs";
+import { FiMail } from "react-icons/fi";
 
-export default function Footer() {
+export default function Footer({ account, exploreArkane, getInTouch }) {
   return (
-    <div className='container-fluid fixed-bottom bg-white text-black px-5'>
-      <footer className='py-5'>
-        <div className='row'>
-          <div className='col-6 col-md-2 mb-3'>
-            <h5>Section</h5>
-            <ul className='nav flex-column'>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Home
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Features
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Pricing
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  FAQs
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  About
-                </a>
-              </li>
-            </ul>
+    <div className='container-fluid bg-black text-white px-5 vw-100'>
+      <div className='container'>
+        <footer className='py-5'>
+          <div className='d-flex w-100 flex-row justify-space-between'>
+            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
+              <h5 className='text-uppercase'>Account</h5>
+              <ul className='nav flex-column'>
+                {account.map((item, index) => (
+                  <li className='nav-item mb-2' key={index}>
+                    <a href={item.href} className='nav-link p-0 text-muted'>
+                      {item.value}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className='col-md-1'></div>
+            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
+              <h5 className='text-uppercase'>Explore Arkane</h5>
+              <ul className='nav flex-column'>
+                {exploreArkane.map((item, index) => (
+                  <li className='nav-item mb-2' key={index}>
+                    <a href={item.href} className='nav-link p-0 text-muted'>
+                      {item.value}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className='col-md-1'></div>
+            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
+              <h5 className='text-uppercase'>Get In Touch</h5>
+              <ul className='nav flex-column'>
+                {getInTouch.map((item, index) => (
+                  <li className='nav-item mb-2' key={index}>
+                    <a href={item.href} className='nav-link p-0 text-muted'>
+                      {item.value}
+                    </a>
+                  </li>
+                ))}
+                <ul className='list-unstyled d-flex mt-1'>
+                  <li>
+                    <BsLinkedin className='nav-link p-0 text-muted' />
+                  </li>
+                  <li className='ms-3'>
+                    <BsFacebook className='nav-link p-0 text-muted' />
+                  </li>
+                  <li className='ms-3'>
+                    <BsTwitter className='nav-link p-0 text-muted' />
+                  </li>
+                  <li className='ms-3'>
+                    <FiMail className='nav-link p-0 text-muted' />
+                  </li>
+                </ul>
+              </ul>
+            </div>
           </div>
 
-          <div className='col-6 col-md-2 mb-3'>
-            <h5>Section</h5>
-            <ul className='nav flex-column'>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Home
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Features
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Pricing
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  FAQs
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  About
-                </a>
-              </li>
-            </ul>
+          <div className='d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top'>
+            <p>© 2022 Company, Inc. All rights reserved.</p>
           </div>
-
-          <div className='col-6 col-md-2 mb-3'>
-            <h5>Section</h5>
-            <ul className='nav flex-column'>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Home
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Features
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  Pricing
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  FAQs
-                </a>
-              </li>
-              <li className='nav-item mb-2'>
-                <a href='#' className='nav-link p-0 text-muted'>
-                  About
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className='col-md-5 offset-md-1 mb-3'>
-            <form
-              data-dashlane-rid='de581008b4eede7d'
-              data-form-type='newsletter'
-            >
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of everything new and exciting from us.</p>
-              <div className='d-flex flex-column flex-sm-row w-100 gap-2'>
-                <label htmlFor='newsletter1' className='visually-hidden'>
-                  Email address
-                </label>
-                <input
-                  id='newsletter1'
-                  type='text'
-                  className='form-control'
-                  placeholder='Email address'
-                  data-dashlane-rid='d19ac9dc181fbfde'
-                  data-form-type='email'
-                  data-kwimpalastatus='alive'
-                  data-kwimpalaid='1674509898507-0'
-                  fdprocessedid='6igtpr'
-                />
-                <button
-                  className='btn btn-primary'
-                  type='button'
-                  data-dashlane-rid='951f647bcafd3dbe'
-                  data-form-type='action,subscribe'
-                  fdprocessedid='34m0d'
-                  data-dashlane-label='true'
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div className='d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top'>
-          <p>© 2022 Company, Inc. All rights reserved.</p>
-          <ul className='list-unstyled d-flex'>
-            <li className='ms-3'>
-              <a className='link-dark' href='#'>
-                <svg className='bi' width='24' height='24'>
-                  <use xlinkHref='#twitter'></use>
-                </svg>
-              </a>
-            </li>
-            <li className='ms-3'>
-              <a className='link-dark' href='#'>
-                <svg className='bi' width='24' height='24'>
-                  <use xlinkHref='#instagram'></use>
-                </svg>
-              </a>
-            </li>
-            <li className='ms-3'>
-              <a className='link-dark' href='#'>
-                <svg className='bi' width='24' height='24'>
-                  <use xlinkHref='#facebook'></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }

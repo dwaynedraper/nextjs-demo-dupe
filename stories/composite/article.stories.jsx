@@ -1,7 +1,7 @@
 import Article from "@/components/composite/Article";
 
 export default {
-  title: "Components/Article",
+  title: "Composite/Article",
   component: Article,
 };
 
