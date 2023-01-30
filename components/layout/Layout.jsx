@@ -24,7 +24,7 @@ const getInTouch = [
 
 export default function Layout(props) {
   return (
-    <div className='bg-white min-vh-100 d-flex flex-column justify-content-between'>
+    <div className='min-vh-100 d-flex flex-column justify-content-between bg-brand-rev text-brand'>
       <NavBar />
       <main>{props.children}</main>
       <Footer

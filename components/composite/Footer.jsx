@@ -4,16 +4,16 @@ import { FiMail } from "react-icons/fi";
 
 export default function Footer({ account, exploreArkane, getInTouch }) {
   return (
-    <div className='container-fluid bg-black text-white px-5 vw-100'>
+    <div className='container-fluid px-5 vw-100 bg-brand mt-7'>
       <div className='container'>
         <footer className='py-5'>
           <div className='d-flex w-100 flex-row justify-space-between'>
-            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
-              <h5 className='text-uppercase'>Account</h5>
+            <div className='col-6 col-md-3 mb-3 border-top border-2 pt-2'>
+              <h5 className='text-uppercase text-light'>Account</h5>
               <ul className='nav flex-column'>
                 {account.map((item, index) => (
                   <li className='nav-item mb-2' key={index}>
-                    <a href={item.href} className='nav-link p-0 text-muted'>
+                    <a href={item.href} className='nav-link p-0 text-light'>
                       {item.value}
                     </a>
                   </li>
@@ -21,12 +21,12 @@ export default function Footer({ account, exploreArkane, getInTouch }) {
               </ul>
             </div>
             <div className='col-md-1'></div>
-            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
-              <h5 className='text-uppercase'>Explore Arkane</h5>
+            <div className='col-6 col-md-3 mb-3 border-top border-2 pt-2'>
+              <h5 className='text-uppercase text-light'>Explore Arkane</h5>
               <ul className='nav flex-column'>
                 {exploreArkane.map((item, index) => (
                   <li className='nav-item mb-2' key={index}>
-                    <a href={item.href} className='nav-link p-0 text-muted'>
+                    <a href={item.href} className='nav-link p-0 text-light'>
                       {item.value}
                     </a>
                   </li>
@@ -35,28 +35,28 @@ export default function Footer({ account, exploreArkane, getInTouch }) {
             </div>
 
             <div className='col-md-1'></div>
-            <div className='col-6 col-md-3 mb-3 border-top pt-2'>
-              <h5 className='text-uppercase'>Get In Touch</h5>
+            <div className='col-6 col-md-3 mb-3 border-top border-2 pt-2'>
+              <h5 className='text-uppercase text-light'>Get In Touch</h5>
               <ul className='nav flex-column'>
                 {getInTouch.map((item, index) => (
                   <li className='nav-item mb-2' key={index}>
-                    <a href={item.href} className='nav-link p-0 text-muted'>
+                    <a href={item.href} className='nav-link p-0 text-light'>
                       {item.value}
                     </a>
                   </li>
                 ))}
                 <ul className='list-unstyled d-flex mt-1'>
                   <li>
-                    <BsLinkedin className='nav-link p-0 text-muted' />
+                    <BsLinkedin className='nav-link p-0 text-light' />
                   </li>
                   <li className='ms-3'>
-                    <BsFacebook className='nav-link p-0 text-muted' />
+                    <BsFacebook className='nav-link p-0 text-light' />
                   </li>
                   <li className='ms-3'>
-                    <BsTwitter className='nav-link p-0 text-muted' />
+                    <BsTwitter className='nav-link p-0 text-light' />
                   </li>
                   <li className='ms-3'>
-                    <FiMail className='nav-link p-0 text-muted' />
+                    <FiMail className='nav-link p-0 text-light' />
                   </li>
                 </ul>
               </ul>
