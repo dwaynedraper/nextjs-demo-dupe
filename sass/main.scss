@@ -7,13 +7,14 @@ $brand-rev: #f7f7f7;
 //* Core variable overrides
 //* WARNING! These are applied globally even when no classes are used (e.g. w/o `bg-primary`)
 //* Do not proceed unless you know what you are doing!
-// $body-bg: $secondary;
-// $link-color: $primary;
-// $link-hover-color: $primary-lt;
-// $border-color: $primary-lt;
+// $body-bg: $var;
+// $body-color: $var;
+// $link-color: $var;
+// $link-hover-color: $var;
+// $border-color: $var;
 // $border-color-translucent: rgba($primary-lt, 0.25);
-// $component-active-color: $primary-lt;
-// $component-active-bg: $primary-dk;
+// $component-active-color: $var;
+// $component-active-bg: $var;
 
 //* Import Functions and Variables from Bootstrap
 @import "../node_modules/bootstrap/scss/_functions";
