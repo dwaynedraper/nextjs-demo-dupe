@@ -4,7 +4,6 @@ import { FiMail } from "react-icons/fi";
 
 // export default function Footer({ account, exploreArkane, getInTouch }) {
 export default function Footer(props) {
-  console.log("Footer props", props);
   let footerLinks = {};
   props.links.results.forEach((link) => {
     if (footerLinks[link.section] === undefined) {
