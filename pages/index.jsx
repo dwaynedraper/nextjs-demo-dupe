@@ -2,16 +2,22 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "@/components/layout/Layout";
 import Container from "@/components/layout/Container";
+import Hero from "@/components/composite/Hero";
+import Cards from "@/components/composite/Cards";
+import CTA from "@/components/composite/CTA";
+import FAQ from "@/components/composite/FAQ";
 import styles from "@/dist/Home.module.css";
 // TODO: Move contents to press-release.js after creating the real home page.
 
-const Index = ({ article, links }) => {
+const Index = ({ article, links, preview, hero }) => {
   return (
     <>
       <Head>
         <title>Content Hub ONE Example</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
+        <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></link>
       </Head>
       <Layout links={links}>
         <div className={styles.top}>
@@ -48,6 +54,10 @@ const Index = ({ article, links }) => {
         </div>
 
         <main className={styles.main}>
+          <Hero header={hero.header} description={hero.description} content={hero.content.content[0].content.text} image={hero.bannerImage.results[0].fileUrl} />
+          <Cards />
+          <CTA />
+          <FAQ />
           <div className={styles.center}>
             <h1>{article.title}</h1>
             <h4>{article.summary}</h4>
@@ -111,8 +121,9 @@ export async function getStaticProps({ preview = false }) {
   const article = await getArticle(preview);
   const contacts = await getContacts(preview);
   const links = await getLinks(preview);
+  const hero = await getHero(preview);
   return {
-    props: { article, links, preview },
+    props: { article, links, preview, hero },
   };
 }
 
@@ -143,6 +154,24 @@ export async function getArticle(preview) {
     }`
   );
   return result.data.articles.results[0];
+}
+
+export async function getHero(preview) {
+  const result = await fetchAPI(
+    `{
+      contentBanner( id:"AVwSP1ngw0aaESG6uNZQZQ") {
+        header
+        description
+        content
+        bannerImage {
+          results {
+            fileUrl
+          }
+        }
+      }
+    }`
+  );
+  return result.data.contentBanner;
 }
 
 export async function getContacts(preview) {

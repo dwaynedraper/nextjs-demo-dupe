@@ -1,5 +1,6 @@
 import Footer from "../composite/Footer";
 import NavBar from "../composite/NavBar";
+import Hero from "../composite/Hero";
 
 export default function Layout(props) {
   return (
