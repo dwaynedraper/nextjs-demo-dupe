@@ -6,39 +6,6 @@ import Container from "../layout/Container";
 export default function Article({ article }) {
   return (
     <>
-      {/* <div className={styles.top}>
-        <div>
-          <a
-            href='https://developers.sitecore.com'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Image
-              src='/next.svg'
-              alt='Sitecore Logo'
-              width={222}
-              height={30}
-              priority
-            />
-          </a>
-        </div>
-        <div className={styles.right}>
-          <a
-            href='https://developers.sitecore.com'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Image
-              src='/vercel.svg'
-              alt='Sitecore Logo'
-              width={222}
-              height={30}
-              priority
-            />
-          </a>
-        </div>
-      </div> */}
-
       <main className={styles.main}>
         <div>
           <h1>{article.title + "title"}</h1>
