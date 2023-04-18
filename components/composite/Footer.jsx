@@ -13,7 +13,7 @@ export default function Footer(props) {
   });
 
   return (
-    <div className='container-fluid px-5 vw-100 bg-brand bg-gradient mt-7'>
+    <div className='container-fluid px-5 vw-100 bg-brand mt-7'>
       <div className='container'>
         <footer className='py-5 w-100'>
           <div className='d-flex w-100 flex-row justify-content-between'>

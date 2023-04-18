@@ -2,7 +2,7 @@
 $brand: black;
 $brand-action: #ffffff;
 $brand-accent: #f7b500;
-$brand-rev: #f7f7f7;
+$brand-rev: #eee;
 $brand-hover: #121317;
 
 //* Core variable overrides
@@ -97,4 +97,16 @@ section {
 
 .section-title p {
   margin-bottom: 0;
+}
+.nav-arkane,
+footer {
+  font-family: Montserrat;
+  h5 {
+    text-transform: uppercase;
+    padding-bottom: $spacer * 0.5;
+    font-weight: 600;
+  }
+  ul {
+    text-transform: none;
+  }
 }
