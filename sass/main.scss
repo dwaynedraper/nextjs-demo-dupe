@@ -98,7 +98,13 @@ section {
 .section-title p {
   margin-bottom: 0;
 }
-.nav-arkane,
+
+.nav-arkane {
+  font-family: Montserrat;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 footer {
   font-family: Montserrat;
   h5 {
