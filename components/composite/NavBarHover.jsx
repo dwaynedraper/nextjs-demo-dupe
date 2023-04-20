@@ -8,7 +8,7 @@ export default function NavBar() {
     <nav className='navbar bg-black navbar-expand-lg nav-arkane'>
       <div className='container'>
         <div className='me-5'>
-          <Link href={"/"}>
+          <Link href={"/"} legacyBehavior>
             <Image
               src={ArkaneLogo}
               alt='Arkane Digital Logo'
