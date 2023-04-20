@@ -15,9 +15,6 @@ const Index = ({ article, links, preview, hero }) => {
       <Head>
         <title>Content Hub ONE Example</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></link>
       </Head>
       <Layout links={links}>
         <div className={styles.top}>
@@ -54,15 +51,15 @@ const Index = ({ article, links, preview, hero }) => {
         </div>
 
         <main className={styles.main}>
-          <Hero header={hero.header} description={hero.description} content={hero.content.content[0].content.text} image={hero.bannerImage.results[0].fileUrl} />
+          {/* <Hero header={hero.header} description={hero.description} content={hero.content.content[0].content.text} image={hero.bannerImage.results[0].fileUrl} /> */}
           <Cards />
           <CTA />
           <FAQ />
           <div className={styles.center}>
-            <h1>{article.title}</h1>
-            <h4>{article.summary}</h4>
-            {/* <p>{article.body}</p> */}
             <Container>
+              <h1>{article.title}</h1>
+              <h4>{article.summary}</h4>
+              {/* <p>{article.body}</p> */}
               <div className='row mt-5 text-start'>
                 <p>
                   Bacon ipsum dolor amet boudin in excepteur, chuck swine ea
