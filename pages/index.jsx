@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Layout from "@/components/layout/Layout";
 import Container from "@/components/layout/Container";
 import Hero from "@/components/composite/Hero";

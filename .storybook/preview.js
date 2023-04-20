@@ -1,6 +1,6 @@
 import "../dist/main.css";
 import "../dist/Home.module.css";
-import * as NextImage from "next/image";
+import * as NextImage from "next/legacy/image";
 import { setupWorker, rest } from "msw";
 
 if (typeof global.process === "undefined") {
