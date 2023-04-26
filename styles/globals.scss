@@ -19,6 +19,50 @@
 }
 
 body {
-  @apply bg-gradient-to-br from-brand-light to-brand-lighter;
   color: rgb(var(--foreground-rgb));
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  width: 100%;
+  z-index: -1;
+  @apply bg-gradient-to-br from-brand-200 via-brand-500 to-brand-200;
+}
+
+// body {
+//   @apply bg-gradient-to-br from-brand-200 via-brand-800 to-brand-200;
+//   color: rgb(var(--foreground-rgb));
+// }
+
+.front-page {
+  min-height: 93vh;
+}
+
+// This class is used to make an image slowly move up and down
+.bounce {
+  animation: updown 2.5s ease-in-out infinite;
+}
+// Leave these ↕ two  blocks together - ↓ this is the keyframe info for ↑ .bounce
+@keyframes updown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.unset {
+  background-color: unset;
+  color: unset;
+}
+
+.z-neg1 {
+  z-index: -1;
 }

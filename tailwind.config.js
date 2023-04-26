@@ -10,7 +10,7 @@ module.exports = {
       black: "#000",
       white: "#fff",
       primary: "#b803a6",
-      "primary-hover": "##7E0272",
+      "primary-hover": "#7E0272",
       "brand-100": "#f4f6fc",
       "brand-200": "#E1E6F4",
       "brand-300": "#d3daef",

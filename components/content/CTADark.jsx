@@ -10,8 +10,8 @@ export default function CTA({
 }) {
   return (
     <div className={`h-72 flex flex-col grow-0 justify-between ${className}`}>
-      <h1 className='text-6xl font-bold'>{heading}</h1>
-      <h2 className='text-3xl'>{subheading}</h2>
+      <h1 className='text-brand-900 text-6xl font-bold'>{heading}</h1>
+      <h2 className='text-brand-dark text-3xl'>{subheading}</h2>
       <Button />
     </div>
   );

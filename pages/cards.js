@@ -1,32 +1,13 @@
-// Next imports
+// Next.js imports
+import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 
 // Components
 import Layout from "@/components/layout/Layout";
-import CardGrid from "@/components/composite/CardGrid";
 import Container from "@/components/container/Container";
-import ContainerDark from "@/components/container/ContainerDark";
-import ContainerReverse from "@/components/container/ContainerReverse";
-import FiftyFifty from "@/components/composite/FiftyFifty";
-import Hero from "@/components/container/Hero";
-import ImageBounce from "@/components/content/ImageBounce";
-import ParallaxWrapper from "@/components/container/ParallaxWrapper";
-import Unset from "@/components/composite/Unset";
+import CardGrid from "@/components/composite/CardGrid";
 
-// Other imports
-import logo from "@/public/arkane-square-logo.svg";
-import logoWhite from "@/public/arkane-square-logo-white.svg";
-import styles from "@/styles/Home.module.scss";
-import CTA from "@/components/content/CTA";
-import CTADark from "@/components/content/CTADark";
-
-const inter = Inter({ subsets: ["latin"] });
-
-const subheading = "Call us today for a free consultation";
-
-//Example CMS Data
+// Example CMS Data
 const users = [
   {
     emotion: "Focused",
@@ -85,58 +66,15 @@ const users = [
   },
 ];
 
-export default function Home({ article, links, preview, hero }) {
+export default function cards({ links }) {
   return (
     <>
       <Head>
-        <title>Arkane Next.js Demo</title>
+        <title>Cards</title>
         <meta name='description' content='Arkane Digtal Next.js CMS Demo' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Layout links={links}>
-        <Hero>
-          <FiftyFifty>
-            <CTADark
-              heading='Better Solutions for Business'
-              subheading={subheading}
-            />
-            <ImageBounce
-              src={logo}
-              alt='Arkane Logo'
-              className={styles.bounce}
-            />
-          </FiftyFifty>
-        </Hero>
-        <ContainerDark>
-          <FiftyFifty>
-            <CTA
-              heading='Better Solutions for Business'
-              subheading={subheading}
-            />
-            <ImageBounce
-              src={logoWhite}
-              alt='Arkane Logo'
-              className={styles.bounce}
-            />
-          </FiftyFifty>
-        </ContainerDark>
-        <ParallaxWrapper
-          imageUrl={"https://source.unsplash.com/random/?landscape"}
-        >
-          <ContainerReverse className='h-48'>
-            <FiftyFifty>
-              <CTA
-                heading='Better Solutions for Business'
-                subheading={subheading}
-              />
-              <ImageBounce
-                src={logo}
-                alt='Arkane Logo'
-                className={styles.bounce}
-              />
-            </FiftyFifty>
-          </ContainerReverse>
-        </ParallaxWrapper>
         <Container>
           <CardGrid type='user details' users={users} />
         </Container>
@@ -146,12 +84,9 @@ export default function Home({ article, links, preview, hero }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const article = await getArticle(preview);
-  const contacts = await getContacts(preview);
   const links = await getLinks(preview);
-  const hero = await getHero(preview);
   return {
-    props: { article, links, preview, hero },
+    props: { links },
   };
 }
 
@@ -166,57 +101,6 @@ async function fetchAPI(query) {
   }).then((response) => {
     return response.json();
   });
-}
-
-export async function getArticle(preview) {
-  const result = await fetchAPI(
-    `{ 
-      articles: allSampleArticle
-      {
-        results {
-          title
-          summary
-          body
-        }
-      }
-    }`
-  );
-  return result.data.articles.results[0];
-}
-
-export async function getHero(preview) {
-  const result = await fetchAPI(
-    `{
-      contentBanner( id:"AVwSP1ngw0aaESG6uNZQZQ") {
-        header
-        description
-        content
-        bannerImage {
-          results {
-            fileUrl
-          }
-        }
-      }
-    }`
-  );
-  return result.data.contentBanner;
-}
-
-export async function getContacts(preview) {
-  const result = await fetchAPI(
-    `{ 
-      contacts: allContact
-      {
-        results {
-          title
-          contactName
-          email
-          phone
-        }
-      }
-    }`
-  );
-  return result.data.contacts;
 }
 
 export async function getLinks(preview) {

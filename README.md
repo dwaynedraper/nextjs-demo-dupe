@@ -41,9 +41,10 @@ If you need to add colors, make sure to do so in `tailwind.config.js` under `mod
 ```js
   theme: {
     colors: {
-      "brand-dark": "#0e0e24",
-      "brand-light": "#f4f6fc",
       primary: "#b803a6",
+      "primary-hover": "##7E0272",
+      "brand-100": "#f4f6fc",
+      "brand-200": "#E1E6F4",
     },
     extend: {
       backgroundImage: {
