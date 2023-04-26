@@ -1,25 +1,17 @@
-const path = require("path");
-
-module.exports = {
-  stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+/** @type { import('@storybook/nextjs').StorybookConfig } */
+const config = {
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "@storybook/builder-webpack5",
+  framework: {
+    name: "@storybook/nextjs",
+    options: {},
   },
-  webpackFinal: async (config) => {
-    // 👈 and add this here
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": path.resolve(__dirname, "../"),
-    };
-    return config;
+  docs: {
+    autodocs: "tag",
   },
 };
+export default config;

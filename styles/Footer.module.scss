@@ -1,0 +1,12 @@
+.footer {
+  @apply bg-brand-dark;
+  font-family: Montserrat;
+  h5 {
+    text-transform: uppercase;
+    @apply pb-0.5;
+    font-weight: 600;
+  }
+  ul {
+    text-transform: none;
+  }
+}

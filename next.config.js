@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
-//
+const nextConfig = {
+  reactStrictMode: true,
+};
+
 module.exports = {
+  ...nextConfig,
   images: {
     remotePatterns: [
       {
@@ -9,9 +13,7 @@ module.exports = {
         pathname: "/api/media/**",
       },
     ],
+    domains: ["mms-delivery.sitecorecloud.io"],
   },
   reactStrictMode: true,
-  images: {
-    domains: ["mms-delivery.sitecorecloud.io"]
-  }
 };

@@ -1,0 +1,23 @@
+.nav-arkane {
+  font-family: "Montserrat", sans-serif;
+  ul,
+  ol {
+    // @apply font-semibold;
+    @apply uppercase;
+    @apply ps-3;
+    li {
+      @apply inline-block;
+      @apply py-2;
+      @apply px-3;
+      @apply hover:text-brand-light;
+      @apply hover:bg-brand-dark-hover;
+      @apply transition-colors;
+      @apply duration-300;
+      @apply ease-in-out;
+      @apply cursor-pointer;
+    }
+  }
+  @apply bg-brand-dark;
+  @apply text-brand-lighter;
+  @apply align-middle;
+}

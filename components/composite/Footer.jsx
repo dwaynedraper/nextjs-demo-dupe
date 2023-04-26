@@ -1,8 +1,11 @@
 import React from "react";
 import { BsLinkedin, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
+import styles from "@/styles/Footer.module.scss";
+import { Montserrat } from "next/font/google";
 
-// export default function Footer({ account, exploreArkane, getInTouch }) {
+const montserrat = Montserrat({ subsets: ["latin"] });
+
 export default function Footer(props) {
   let footerLinks = {};
   props.links.results.forEach((link) => {
@@ -13,17 +16,28 @@ export default function Footer(props) {
   });
 
   return (
-    <div className='container-fluid px-5 vw-100 bg-brand mt-7'>
-      <div className='container'>
-        <footer className='py-5 w-100'>
-          <div className='d-flex w-100 flex-row justify-content-between'>
+    <div
+      className={`${styles.footer} ${montserrat.className} w-screen px-5 pt-7`}
+    >
+      <div className='md:container mx-auto'>
+        <footer className='py-5 w-full'>
+          <div className='flex w-full flex-row justify-between'>
             {Object.keys(footerLinks).map((key, index) => (
-              <div className='border-top border-2 pt-2 w-100 me-5' key={index}>
-                <h5 className='text-uppercase text-light'>{key}</h5>
-                <ul className='nav flex-column'>
+              <div
+                className={`border-t-2 pt-2 w-full ${
+                  index !== Object.keys(footerLinks).length - 1
+                    ? "md:me-5"
+                    : "md:me-0"
+                }`}
+                key={index}
+              >
+                <h5 className='text-uppercase text-white font-semibold pb-2 md:pb-0'>
+                  {key}
+                </h5>
+                <ul className='nav flex-col'>
                   {footerLinks[key].map((item, index) => (
                     <li className='nav-item mb-2' key={index}>
-                      <a href={item.url} className='nav-link p-0 text-light'>
+                      <a href={item.url} className='nav-link p-0 text-white'>
                         {item.displayText}
                       </a>
                     </li>
@@ -33,20 +47,22 @@ export default function Footer(props) {
             ))}
           </div>
 
-          <div className='d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top text-light'>
-            <p>© 2022 Arkane Digital, LLC. All rights reserved.</p>
-            <ul className='list-unstyled d-flex mt-1'>
+          <div className='flex flex-col md:flex-row justify-between pt-4 mt-4 border-t text-white'>
+            <p className='text-sm md:text-base'>
+              © 2022 Arkane Digital, LLC. All rights reserved.
+            </p>
+            <ul className='list-none flex mt-1'>
               <li>
-                <BsLinkedin className='nav-link p-0 text-light' />
+                <BsLinkedin className='nav-link p-0 text-white' />
               </li>
-              <li className='ms-3'>
-                <BsFacebook className='nav-link p-0 text-light' />
+              <li className='md:ms-3'>
+                <BsFacebook className='nav-link p-0 text-white' />
               </li>
-              <li className='ms-3'>
-                <BsTwitter className='nav-link p-0 text-light' />
+              <li className='md:ms-3'>
+                <BsTwitter className='nav-link p-0 text-white' />
               </li>
-              <li className='ms-3'>
-                <FiMail className='nav-link p-0 text-light' />
+              <li className='md:ms-3'>
+                <FiMail className='nav-link p-0 text-white' />
               </li>
             </ul>
           </div>
