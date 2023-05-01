@@ -1,9 +1,7 @@
 .nav-arkane {
   .navbar {
-    // font-family: "Montserrat", sans-serif;
     ul,
     ol {
-      // @apply font-semibold;
       @apply uppercase;
       @apply ps-3;
       li {
