@@ -1,23 +1,65 @@
 .nav-arkane {
-  font-family: "Montserrat", sans-serif;
-  ul,
-  ol {
-    // @apply font-semibold;
-    @apply uppercase;
-    @apply ps-3;
-    li {
-      @apply inline-block;
+  .navbar {
+    ul,
+    ol {
+      @apply uppercase;
+      @apply ps-3;
+      li {
+        @apply inline-block;
+        @apply py-2;
+        @apply px-3;
+        @apply hover:text-brand-light;
+        @apply hover:bg-brand-dark-hover;
+        @apply transition-colors;
+        @apply duration-300;
+        @apply ease-in-out;
+        @apply cursor-pointer;
+      }
+    }
+    @apply bg-brand-dark;
+    @apply text-brand-lighter;
+    @apply align-middle;
+  }
+  .megamenu {
+    @apply bg-brand-lighter;
+    @apply text-brand-dark;
+    @apply pt-4;
+    @apply pb-10;
+    @apply shadow-2xl;
+    div.category {
       @apply py-2;
-      @apply px-3;
-      @apply hover:text-brand-light;
-      @apply hover:bg-brand-dark-hover;
-      @apply transition-colors;
-      @apply duration-300;
-      @apply ease-in-out;
+      @apply me-8;
+      @apply mb-2;
+      @apply font-semibold;
+      @apply uppercase;
+      @apply border-b;
+      @apply border-brand-dark;
+    }
+    div.subcategory {
+      @apply py-2;
+      @apply me-8;
+      @apply mb-2;
+      @apply font-semibold;
+      @apply uppercase;
       @apply cursor-pointer;
+      @apply hover:underline;
+      @apply hover:underline-offset-4;
+    }
+    div.block-text {
+      @apply text-brand-dark;
+      @apply text-sm;
+      @apply font-normal;
+      @apply mb-4;
+    }
+    ul {
+      li {
+        @apply hover:underline;
+        @apply hover:underline-offset-4;
+        @apply text-brand-700;
+        @apply hover:text-brand-900;
+        @apply cursor-pointer;
+        @apply my-4;
+      }
     }
   }
-  @apply bg-brand-dark;
-  @apply text-brand-lighter;
-  @apply align-middle;
 }
