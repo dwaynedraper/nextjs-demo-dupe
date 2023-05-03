@@ -8,12 +8,12 @@ import Layout from "@/components/layout/Layout";
 import CardGrid from "@/components/composite/CardGrid";
 import Container from "@/components/container/Container";
 import ContainerDark from "@/components/container/ContainerDark";
+import ContainerLight from "@/components/container/ContainerLight";
 import ContainerReverse from "@/components/container/ContainerReverse";
 import FiftyFifty from "@/components/composite/FiftyFifty";
 import Hero from "@/components/container/Hero";
 import ImageBounce from "@/components/content/ImageBounce";
 import ParallaxWrapper from "@/components/container/ParallaxWrapper";
-import Unset from "@/components/composite/Unset";
 
 // Other imports
 import logo from "@/public/arkane-square-logo.svg";
@@ -103,7 +103,7 @@ export default function Home({ article, links, preview, hero }) {
             <ImageBounce
               src={logo}
               alt='Arkane Logo'
-              className={styles.bounce}
+              className={`${styles.bounce} mx-auto flex justify-center`}
             />
           </FiftyFifty>
         </Hero>
@@ -116,7 +116,7 @@ export default function Home({ article, links, preview, hero }) {
             <ImageBounce
               src={logoWhite}
               alt='Arkane Logo'
-              className={styles.bounce}
+              className={`${styles.bounce} mx-auto flex justify-center`}
             />
           </FiftyFifty>
         </ContainerDark>
@@ -132,7 +132,7 @@ export default function Home({ article, links, preview, hero }) {
               <ImageBounce
                 src={logo}
                 alt='Arkane Logo'
-                className={styles.bounce}
+                className={`${styles.bounce} mx-auto flex justify-center`}
               />
             </FiftyFifty>
           </ContainerReverse>

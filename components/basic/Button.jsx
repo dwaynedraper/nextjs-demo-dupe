@@ -9,7 +9,7 @@ export default function Button({
 }) {
   const classes = className
     ? className
-    : `border-primary bg-primary hover:bg-primary-hover text-brand-lighter hover:text-brand-100 py-4 px-6 rounded focus:outline-none text-xl font-bold w-fit`;
+    : `border-primary bg-primary hover:bg-primary-hover text-brand-lighter hover:text-brand-100 py-4 px-6 rounded focus:outline-none text-2xl font-bold w-fit`;
 
   return (
     <button
