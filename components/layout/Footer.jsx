@@ -17,18 +17,17 @@ export default function Footer(props) {
 
   return (
     <div
-      className={`${styles.footer} ${montserrat.className} w-screen px-5 pt-7`}
+      className={`${styles.footer} ${montserrat.className} px-5 pt-7`}
     >
       <div className='md:container mx-auto'>
         <footer className='py-5 w-full'>
           <div className='flex w-full flex-row justify-between'>
             {Object.keys(footerLinks).map((key, index) => (
               <div
-                className={`border-t-2 pt-2 w-full ${
-                  index !== Object.keys(footerLinks).length - 1
+                className={`border-t-2 pt-2 w-full ${index !== Object.keys(footerLinks).length - 1
                     ? "md:me-5"
                     : "md:me-0"
-                }`}
+                  }`}
                 key={index}
               >
                 <h5 className='text-uppercase text-white font-semibold pb-2 md:pb-0'>

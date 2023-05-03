@@ -53,7 +53,7 @@ export default function Navbar() {
             height={50}
           />
         </Link>
-        <div className='ml-8'>
+        <div className='ml-8 hidden lg:block'>
           <ul className='flex items-center space-x-4'>
             <li onMouseEnter={() => handleMouseEnter("menu2")}>
               Home
@@ -70,7 +70,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <div className='ml-auto'>
+        <div className='ml-auto hidden lg:block'>
           <input
             className='bg-brand-lighter text-brand-dark px-4 py-2 rounded'
             type='search'
