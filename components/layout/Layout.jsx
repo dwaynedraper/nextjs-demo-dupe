@@ -1,4 +1,4 @@
-import Footer from "@/components/layout/Footer";
+import FooterKontent from "@/components/layout/FooterKontent";
 import NavBar from "@/components/layout/NavBar";
 // TODO: Footer links should be converted back to props.links once everything is working
 
@@ -10,7 +10,7 @@ export default function Layout(props) {
     <div className='min-h-screen flex flex-col justify-between'>
       <NavBar />
       <main>{props.children}</main>
-      <Footer links={props.links} />
+      <FooterKontent links={props.links} />
     </div>
   );
 }

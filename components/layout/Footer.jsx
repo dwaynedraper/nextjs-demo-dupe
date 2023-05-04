@@ -6,9 +6,16 @@ import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-export default function Footer(props) {
+/**
+ * This is a dynamically populated footer that will take an array of links and
+ * display them in a footer. The links are grouped by section.
+ * This is the base, extendable version. If you extend, extend the name: e.g. FooterKontent
+ * @param {links} props An array of {section, url, displayText, key(optional)}
+ * @returns A JSX element with a dynamically populated footer
+ */
+export default function Footer({ links }) {
   let footerLinks = {};
-  props.links.results.forEach((link) => {
+  links.forEach((link) => {
     if (footerLinks[link.section] === undefined) {
       footerLinks[link.section] = [];
     }
@@ -25,17 +32,17 @@ export default function Footer(props) {
             {Object.keys(footerLinks).map((key, index) => (
               <div
                 className={`border-t-2 pt-2 w-full ${index !== Object.keys(footerLinks).length - 1
-                    ? "md:me-5"
-                    : "md:me-0"
+                  ? "md:me-5"
+                  : "md:me-0"
                   }`}
-                key={index}
+                key={key}
               >
                 <h5 className='text-uppercase text-white font-semibold pb-2 md:pb-0'>
                   {key}
                 </h5>
                 <ul className='nav flex-col'>
                   {footerLinks[key].map((item, index) => (
-                    <li className='nav-item mb-2' key={index}>
+                    <li className='nav-item mb-2' key={item.key ?? index}>
                       <a href={item.url} className='nav-link p-0 text-white'>
                         {item.displayText}
                       </a>
@@ -43,7 +50,8 @@ export default function Footer(props) {
                   ))}
                 </ul>
               </div>
-            ))}
+            )).sort((a, b) => (a.key === "account" ? -1 : 1)
+            )}
           </div>
 
           <div className='flex flex-col md:flex-row justify-between pt-4 mt-4 border-t text-white'>
