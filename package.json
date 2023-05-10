@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@kontent-ai/delivery-sdk": "^14.0.1",
     "@tailwindcss/forms": "^0.5.3",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
