@@ -5,7 +5,7 @@ const deliveryClient = KontentDelivery.createDeliveryClient({
   environmentId: 'e345b878-cec5-0061-03f6-8d06aac8c381'
 });
 
-export const kontentClient = {
+export const kontentRepository = {
   /**
    * getItems fetches all items from Kontent by default, and by type if a query is passed.
    * @param {string} query - the codename of the 'content type' to retrieve (not the individual item codename)

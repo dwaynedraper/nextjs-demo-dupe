@@ -23,8 +23,7 @@ import ParallaxWrapper from "@/components/container/ParallaxWrapper";
 import logo from "@/public/arkane-square-logo.svg";
 import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
-import { kontentService } from "@/services/kontentService";
-import { kontentClient } from "@/lib/kontentClient";
+import { service } from "@/services/service";
 
 const subheading = "Call us today for a free consultation";
 
@@ -153,11 +152,8 @@ export default function Home({ articles, links }) {
 }
 
 export async function getStaticProps() {
-  let rawLinks = await kontentClient.getItems('footer_link');
-  const links = kontentService.parseFooterLinks(rawLinks);
-
-  let rawArticles = await kontentClient.getItems('article_example_content_type');
-  const articles = kontentService.parseArticles(rawArticles);
+  const links = await service.getFooterLinks();
+  const articles = await service.getArticles();
 
   return {
     props: {
