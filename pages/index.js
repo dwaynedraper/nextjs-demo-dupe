@@ -5,11 +5,15 @@ import { Inter } from "next/font/google";
 
 // Components
 import Layout from "@/components/layout/Layout";
+import Article from "@/components/content/Article";
+import BlogCardGrid from "@/components/content/BlogCardGrid";
 import CardGrid from "@/components/composite/CardGrid";
 import Container from "@/components/container/Container";
 import ContainerDark from "@/components/container/ContainerDark";
 import ContainerLight from "@/components/container/ContainerLight";
 import ContainerReverse from "@/components/container/ContainerReverse";
+import CTA from "@/components/content/CTA";
+import CTADark from "@/components/content/CTADark";
 import FiftyFifty from "@/components/composite/FiftyFifty";
 import Hero from "@/components/container/Hero";
 import ImageBounce from "@/components/content/ImageBounce";
@@ -19,10 +23,8 @@ import ParallaxWrapper from "@/components/container/ParallaxWrapper";
 import logo from "@/public/arkane-square-logo.svg";
 import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
-import CTA from "@/components/content/CTA";
-import CTADark from "@/components/content/CTADark";
-
-const inter = Inter({ subsets: ["latin"] });
+import { kontentService } from "@/services/kontentService";
+import { kontentClient } from "@/lib/kontentClient";
 
 const subheading = "Call us today for a free consultation";
 
@@ -85,7 +87,7 @@ const users = [
   },
 ];
 
-export default function Home({ article, links, preview, hero }) {
+export default function Home({ articles, links }) {
   return (
     <>
       <Head>
@@ -108,6 +110,11 @@ export default function Home({ article, links, preview, hero }) {
           </FiftyFifty>
         </Hero>
         <ContainerDark>
+          <Article
+            article={articles[1]}
+          />
+        </ContainerDark>
+        {/* <ContainerDark>
           <FiftyFifty>
             <CTA
               heading='Better Solutions for Business'
@@ -119,7 +126,7 @@ export default function Home({ article, links, preview, hero }) {
               className={`${styles.bounce} mx-auto flex justify-center`}
             />
           </FiftyFifty>
-        </ContainerDark>
+        </ContainerDark> */}
         <ParallaxWrapper
           imageUrl={"https://source.unsplash.com/random/?landscape"}
         >
@@ -145,92 +152,17 @@ export default function Home({ article, links, preview, hero }) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const article = await getArticle(preview);
-  const contacts = await getContacts(preview);
-  const links = await getLinks(preview);
-  const hero = await getHero(preview);
+export async function getStaticProps() {
+  let rawLinks = await kontentClient.getItems('footer_link');
+  const links = kontentService.parseFooterLinks(rawLinks);
+
+  let rawArticles = await kontentClient.getItems('article_example_content_type');
+  const articles = kontentService.parseArticles(rawArticles);
+
   return {
-    props: { article, links, preview, hero },
-  };
-}
-
-async function fetchAPI(query) {
-  return fetch(process.env.SITECORE_PREVIEW_ENDPOINT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-GQL-Token": process.env.PREVIEW_API_KEY,
-    },
-    body: JSON.stringify({ query }),
-  }).then((response) => {
-    return response.json();
-  });
-}
-
-export async function getArticle(preview) {
-  const result = await fetchAPI(
-    `{ 
-      articles: allSampleArticle
-      {
-        results {
-          title
-          summary
-          body
-        }
-      }
-    }`
-  );
-  return result.data.articles.results[0];
-}
-
-export async function getHero(preview) {
-  const result = await fetchAPI(
-    `{
-      contentBanner( id:"AVwSP1ngw0aaESG6uNZQZQ") {
-        header
-        description
-        content
-        bannerImage {
-          results {
-            fileUrl
-          }
-        }
-      }
-    }`
-  );
-  return result.data.contentBanner;
-}
-
-export async function getContacts(preview) {
-  const result = await fetchAPI(
-    `{ 
-      contacts: allContact
-      {
-        results {
-          title
-          contactName
-          email
-          phone
-        }
-      }
-    }`
-  );
-  return result.data.contacts;
-}
-
-export async function getLinks(preview) {
-  const result = await fetchAPI(
-    `{ 
-      links: allFooterLink (first:50) 
-      {
-        results {
-          section
-          url
-          displayText
-        }
-      }
-    }`
-  );
-  return result.data.links;
+    props: {
+      links,
+      articles
+    }
+  }
 }
