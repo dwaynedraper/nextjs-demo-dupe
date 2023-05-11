@@ -1,7 +1,7 @@
 const KontentDelivery = require('@kontent-ai/delivery-sdk');
 
 // initialize delivery client
-const deliveryClient = KontentDelivery.createDeliveryClient({
+const deliveryClient: KontentDelivery.DeliveryClient = KontentDelivery.createDeliveryClient({
   environmentId: 'e345b878-cec5-0061-03f6-8d06aac8c381'
 });
 

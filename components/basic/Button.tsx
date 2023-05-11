@@ -1,12 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Button({
+interface ButtonProps {
+  url?: string;
+  type?: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export default function Button ({
   url = "",
   type = "submit",
   children,
   className = "",
-}) {
+}): JSX.Element {
   const classes = className
     ? className
     : `border-primary bg-primary hover:bg-primary-hover text-brand-lighter hover:text-brand-100 py-4 px-6 rounded focus:outline-none text-2xl font-bold w-fit`;
