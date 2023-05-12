@@ -25,17 +25,7 @@ import logo from "@/public/arkane-square-logo.svg";
 import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
-import { ArticleP, FooterLinkP } from "@/services/types";
-
-interface User {
-  emotion: string;
-  name: string;
-  description: string;
-  title: string;
-  location: string;
-  email: string;
-  imageUrl?: string;
-}
+import { ArticleP, FooterLinkP, UserP } from "@/services/types";
 
 interface Props {
   articles: ArticleP[];
@@ -45,7 +35,7 @@ interface Props {
 const subheading = "Call us today for a free consultation";
 
 //Example CMS Data
-const users: User[] = [
+const users: UserP[] = [
   {
     emotion: "Focused",
     name: "Marco Polo",

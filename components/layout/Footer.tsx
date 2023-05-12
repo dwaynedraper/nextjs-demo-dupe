@@ -3,8 +3,12 @@ import { BsLinkedin, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
 import styles from "@/styles/Footer.module.scss";
 import { Montserrat } from "next/font/google";
-
+import { FooterLinkP } from "@/services/types";
 const montserrat = Montserrat({ subsets: ["latin"] });
+
+interface FooterProps {
+  links: FooterLinkP[];
+}
 
 /**
  * This is a dynamically populated footer that will take an array of links and
@@ -13,8 +17,8 @@ const montserrat = Montserrat({ subsets: ["latin"] });
  * @param {links} props An array of {section, url, displayText, key(optional)}
  * @returns A JSX element with a dynamically populated footer
  */
-export default function Footer({ links }) {
-  let footerLinks = {};
+export default function Footer({ links }: FooterProps): React.ReactElement {
+  const footerLinks = {};
   links.forEach((link) => {
     if (footerLinks[link.section] === undefined) {
       footerLinks[link.section] = [];
@@ -50,8 +54,7 @@ export default function Footer({ links }) {
                   ))}
                 </ul>
               </div>
-            )).sort((a, b) => (a.key === "account" ? -1 : 1)
-            )}
+            ))}
           </div>
 
           <div className='flex flex-col md:flex-row justify-between pt-4 mt-4 border-t text-white'>

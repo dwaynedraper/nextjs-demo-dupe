@@ -1,4 +1,9 @@
 import React from 'react'
+import { ArticleP } from '@/services/types'
+
+interface ArticleProps {
+  article: ArticleP;
+}
 
 export default function Article({ article }) {
   return (

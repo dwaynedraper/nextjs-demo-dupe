@@ -10,3 +10,13 @@ export interface ArticleP {
   body: string;
   url: string;
 }
+
+export interface UserP {
+  emotion: string;
+  name: string;
+  description: string;
+  title: string;
+  location: string;
+  email: string;
+  imageUrl?: string;
+}

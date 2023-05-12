@@ -1,7 +1,12 @@
 import React from 'react'
 import styles from '@/styles/NavBar.module.scss'
 
-export default function NavSection({ category, links }) {
+interface NavSectionProps {
+  category?: string;
+  links: string[];
+}
+
+export default function NavSection({ category, links }: NavSectionProps) {
   return (
     <div className='w-1/4'>
       <div className='flex flex-col'>

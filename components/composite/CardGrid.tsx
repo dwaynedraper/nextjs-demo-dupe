@@ -1,3 +1,4 @@
+import { UserP } from "@/services/types";
 import React, { lazy, Suspense } from "react";
 
 const CardUser = lazy(() => import("@/components/composite/CardUser"));
@@ -5,8 +6,15 @@ const CardUserDetails = lazy(() =>
   import("@/components/composite/CardUserDetails")
 );
 
-export default function CardGrid({ type, users }) {
-  let CardComponent;
+interface CardGridProps {
+  type: "user" | "user details";
+  users: UserP[];
+}
+
+type CardComponent = React.ElementType;
+
+export default function CardGrid({ type, users }: CardGridProps): React.ReactElement | null {
+  let CardComponent: CardComponent | null;
   switch (type) {
     case "user":
       CardComponent = CardUser;
