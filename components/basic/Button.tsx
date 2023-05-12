@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 interface ButtonProps {
   url?: string;
-  type?: string;
-  children?: React.ReactNode;
+  type?: "submit" | "button" | "reset";
+  name?: string;
   className?: string;
 }
 
 export default function Button ({
   url = "",
   type = "submit",
-  children,
+  name = "Submit",
   className = "",
 }): JSX.Element {
   const classes = className
@@ -21,10 +21,10 @@ export default function Button ({
   return (
     <button
       className={classes}
-      type={type}
+      type={type as "submit" | "button" | "reset"}
       onClick={() => (url ? (window.location.href = url) : null)}
     >
-      {children || "Submit"}
+      {name}
     </button>
   );
 }

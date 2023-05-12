@@ -1,4 +1,4 @@
-const KontentDelivery = require('@kontent-ai/delivery-sdk');
+import * as KontentDelivery from '@kontent-ai/delivery-sdk';
 
 // initialize delivery client
 const deliveryClient: KontentDelivery.DeliveryClient = KontentDelivery.createDeliveryClient({
