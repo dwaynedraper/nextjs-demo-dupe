@@ -2,12 +2,16 @@ import React, { useEffect, useRef } from "react";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { BsChevronCompactDown } from "react-icons/bs";
 
+interface HeroProps {
+  children: React.ReactNode;
+}
+
 /**
  * This component is meant to be a top level wrapper component in the main content area of a page.
  * It is a container for a component in the components\composite folder.
  * @returns {React.ReactElement} A wrapper component for a layout element.
  */
-export default function Hero({ children }) {
+export default function Hero({ children }: HeroProps): React.ReactElement {
   const iconRef = useRef(null);
 
   useEffect(() => {
