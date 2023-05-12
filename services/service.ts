@@ -1,15 +1,16 @@
 import { kontentService } from "@/services/kontentService"
-import { chOneService } from "@/services/chOneService";
 import { FooterLinkP, ArticleP } from "@/services/types";
 
 const contentProvider: string = process.env.CONTENT_PROVIDER;
 
-let genericService: any;
+let genericService;
 if (contentProvider === 'kontent') {
   genericService = kontentService;
-} else if (contentProvider === 'chOne') {
-  genericService = chOneService;
-} else {
+}
+//  else if (contentProvider === 'chOne') {
+//   genericService = chOneService;
+// } 
+else {
   throw new Error(`Unsupported content provider: ${contentProvider}`);
 }
 

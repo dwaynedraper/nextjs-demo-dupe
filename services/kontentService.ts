@@ -3,10 +3,10 @@ import { FooterLink } from "@/models/content-types/footer_link";
 import { Article } from "@/models/content-types/article";
 import { ArticleP, FooterLinkP } from "@/services/types";
 
-export const kontentService: Promise<FooterLinkP[]> = {
-  async getFooterLinks() {
-    const data: FooterLink[] = await kontentRepository.getItems('footer_link');
-    const links: FooterLinkP[] = data.items.map(item => {
+export const kontentService = {
+  async getFooterLinks(): Promise<FooterLinkP[]> {
+    const data: FooterLink[] = (await kontentRepository.getItems('footer_link')).items;
+    const links: FooterLinkP[] = data.map(item => {
       return {
         section: item.elements.section.value[0].codename,
         url: item.elements.url.value,
@@ -18,8 +18,8 @@ export const kontentService: Promise<FooterLinkP[]> = {
   },
 
   async getArticles(): Promise<ArticleP[]> {
-    const data: Article[] = await kontentRepository.getItems('article');
-    const articles: ArticleP[] = data.items.map(item => {
+    const data: Article[] = (await kontentRepository.getItems('article')).items;
+    const articles: ArticleP[] = data.map(item => {
       return {
         title: item.elements.title.value,
         body: item.elements.body.value,
@@ -30,7 +30,7 @@ export const kontentService: Promise<FooterLinkP[]> = {
   },
 
   async getItemById(id) {
-    const results: any = await kontentRepository.getItemByCodename(id);
+    const results = await kontentRepository.getItemByCodename(id);
     return results;
   },
-}
+};
