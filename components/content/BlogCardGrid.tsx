@@ -1,3 +1,5 @@
+import React from 'react'
+
 const posts = [
   {
     id: 1,
@@ -50,7 +52,7 @@ const posts = [
   // More posts...
 ]
 
-export default function BlogCardGrid() {
+export default function BlogCardGrid(): React.ReactElement {
   return (
     <div className="bg-brand-lighter py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

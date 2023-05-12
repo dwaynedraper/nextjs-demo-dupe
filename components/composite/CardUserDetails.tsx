@@ -2,10 +2,21 @@ import React from "react";
 import { BiBrain, BiBriefcase } from "react-icons/bi";
 import { GoLocation, GoMail } from "react-icons/go";
 
+interface CardUserDetailsProps {
+  imageUrl?: string;
+  emotion?: string;
+  name?: string;
+  description?: string;
+  title?: string;
+  location?: string;
+  email?: string;
+  className?: string;
+}
+
 /**
  * This component has an image, a user name, and several details about the user.
  * @param {string} imageUrl The image to display at the top of the card
- * @param {emotion} string How the user is feeling today
+ * @param {string} emotion How the user is feeling today
  * @param {string} name The user's full name
  * @param {string} description A freeform description of the user
  * @param {string} title The user's job title at the company
@@ -23,7 +34,7 @@ export default function CardUserDetails({
   location,
   email,
   className = "",
-}) {
+}: CardUserDetailsProps): React.ReactElement | null {
   return (
     <div
       className={`flex-shrink flex-grow flex flex-wrap md:w-1/2 lg:w-1/3 ${className}`}
