@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "@/styles/ParallaxWrapper.module.scss";
 
-export default function ParallaxAlphaWrapper({ children, imageUrl }) {
+interface ParallaxAlphaWrapperProps {
+  children: React.ReactNode;
+  imageUrl: string;
+}
+
+export default function ParallaxAlphaWrapper({ children, imageUrl }: ParallaxAlphaWrapperProps): React.ReactElement {
   return (
     <div
       className={styles["parallax-alpha-wrapper"]}

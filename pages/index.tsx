@@ -1,7 +1,8 @@
 // Next imports
+import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import { GetStaticProps } from "next";
 
 // Components
 import Layout from "@/components/layout/Layout";
@@ -24,11 +25,27 @@ import logo from "@/public/arkane-square-logo.svg";
 import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
+import { ArticleP, FooterLinkP } from "@/services/types";
+
+interface User {
+  emotion: string;
+  name: string;
+  description: string;
+  title: string;
+  location: string;
+  email: string;
+  imageUrl?: string;
+}
+
+interface Props {
+  articles: ArticleP[];
+  links: FooterLinkP[];
+}
 
 const subheading = "Call us today for a free consultation";
 
 //Example CMS Data
-const users = [
+const users: User[] = [
   {
     emotion: "Focused",
     name: "Marco Polo",
@@ -86,11 +103,11 @@ const users = [
   },
 ];
 
-export default function Home({ articles, links }) {
+export default function Home({ articles, links }: Props): React.ReactElement {
   return (
-    <>
+    <div>
       <Head>
-        <title>Arkane Next.js Demo</title>
+        <title>Arkane Demo</title>
         <meta name='description' content='Arkane Digtal Next.js CMS Demo' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
@@ -113,22 +130,22 @@ export default function Home({ articles, links }) {
             article={articles[1]}
           />
         </ContainerDark>
-        {/* <ContainerDark>
-          <FiftyFifty>
-            <CTA
-              heading='Better Solutions for Business'
-              subheading={subheading}
-            />
-            <ImageBounce
-              src={logoWhite}
-              alt='Arkane Logo'
-              className={`${styles.bounce} mx-auto flex justify-center`}
-            />
-          </FiftyFifty>
-        </ContainerDark> */}
         <ParallaxWrapper
           imageUrl={"https://source.unsplash.com/random/?landscape"}
         >
+          <ContainerReverse className='h-48'>
+            <FiftyFifty>
+              <CTA
+                heading='Better Solutions for Business'
+                subheading={subheading}
+              />
+              <ImageBounce
+                src={logo}
+                alt='Arkane Logo'
+                className={`${styles.bounce} mx-auto flex justify-center`}
+              />
+            </FiftyFifty>
+          </ContainerReverse>
           <ContainerReverse className='h-48'>
             <FiftyFifty>
               <CTA
@@ -147,7 +164,7 @@ export default function Home({ articles, links }) {
           <CardGrid type='user details' users={users} />
         </Container>
       </Layout>
-    </>
+    </div>
   );
 }
 
@@ -160,5 +177,5 @@ export async function getStaticProps() {
       links,
       articles
     }
-  }
+  };
 }
