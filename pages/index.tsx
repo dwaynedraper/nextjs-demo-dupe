@@ -136,19 +136,6 @@ export default function Home({ articles, links }: Props): React.ReactElement {
               />
             </FiftyFifty>
           </ContainerReverse>
-          <ContainerReverse className='h-48'>
-            <FiftyFifty>
-              <CTA
-                heading='Better Solutions for Business'
-                subheading={subheading}
-              />
-              <ImageBounce
-                src={logo}
-                alt='Arkane Logo'
-                className={`${styles.bounce} mx-auto flex justify-center`}
-              />
-            </FiftyFifty>
-          </ContainerReverse>
         </ParallaxWrapper>
         <Container>
           <CardGrid type='user details' users={users} />
