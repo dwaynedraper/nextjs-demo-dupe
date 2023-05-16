@@ -23,18 +23,6 @@ export const kontentService = {
 
     return links;
   },
-  // async getFooterLinks(): Promise<FooterLinkP[]> {
-  //   const data: FooterLink[] = (await kontentRepository.getItems('footer_link')).items;
-  //   const links: FooterLinkP[] = data.map(item => {
-  //     return {
-  //       section: item.elements.section.value[0].codename,
-  //       url: item.elements.url.value,
-  //       displayText: item.elements.display_name.value,
-  //       key: item.elements.index.value
-  //     };
-  //   });
-  //   return links;
-  // },
 
   async getArticles(): Promise<ArticleP[]> {
     const data: Article[] = (await kontentRepository.getItems('article')).items;
