@@ -11,15 +11,17 @@ export const kontentRepository = {
    * @param {string} query - the codename of the 'content type' to retrieve (not the individual item codename)
    * @returns {object} - the response object from Kontent
    */
-  async getItems(query = '') {
+  async getItems(query = '', depthParameter=1) {
     try {
       let response;
       if (query) {
         response = await deliveryClient.items()
           .type(query)
+          .depthParameter(depthParameter)
           .toPromise();
       } else {
         response = await deliveryClient.items()
+          .depthParameter(depthParameter)
           .toPromise();
       }
       return response.data;

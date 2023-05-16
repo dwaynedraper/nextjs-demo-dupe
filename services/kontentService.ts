@@ -5,17 +5,36 @@ import { ArticleP, FooterLinkP } from "@/services/types";
 
 export const kontentService = {
   async getFooterLinks(): Promise<FooterLinkP[]> {
-    const data: FooterLink[] = (await kontentRepository.getItems('footer_link')).items;
-    const links: FooterLinkP[] = data.map(item => {
-      return {
-        section: item.elements.section.value[0].codename,
-        url: item.elements.url.value,
-        displayText: item.elements.display_name.value,
-        key: item.elements.index.value
-      };
+    const data = (await kontentRepository.getItems('footer', 2)).items;
+    const links: FooterLinkP[] = [];
+    
+    data.forEach(item => {
+      item.elements.categories.linkedItems.forEach(category => {
+        category.elements.links.linkedItems.forEach(link => {
+          links.push({
+            section: category.elements.title.value,
+            url: link.elements.url.value,
+            displayText: link.elements.display_name.value,
+            key: link.elements.index.value
+          });
+        });
+      });
     });
+
     return links;
   },
+  // async getFooterLinks(): Promise<FooterLinkP[]> {
+  //   const data: FooterLink[] = (await kontentRepository.getItems('footer_link')).items;
+  //   const links: FooterLinkP[] = data.map(item => {
+  //     return {
+  //       section: item.elements.section.value[0].codename,
+  //       url: item.elements.url.value,
+  //       displayText: item.elements.display_name.value,
+  //       key: item.elements.index.value
+  //     };
+  //   });
+  //   return links;
+  // },
 
   async getArticles(): Promise<ArticleP[]> {
     const data: Article[] = (await kontentRepository.getItems('article')).items;
