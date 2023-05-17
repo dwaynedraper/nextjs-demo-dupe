@@ -2,7 +2,7 @@ import * as KontentDelivery from '@kontent-ai/delivery-sdk';
 
 // initialize delivery client
 const deliveryClient: KontentDelivery.DeliveryClient = KontentDelivery.createDeliveryClient({
-  environmentId: 'e345b878-cec5-0061-03f6-8d06aac8c381'
+  environmentId: 'e345b878-cec5-0061-03f6-8d06aac8c381',
 });
 
 export const kontentRepository = {
@@ -11,7 +11,7 @@ export const kontentRepository = {
    * @param {string} query - the codename of the 'content type' to retrieve (not the individual item codename)
    * @returns {object} - the response object from Kontent
    */
-  async getItems(query = '', depthParameter=1) {
+  async getItems(query = '', depthParameter = 1) {
     try {
       let response;
       if (query) {
@@ -26,7 +26,7 @@ export const kontentRepository = {
       }
       return response.data;
     } catch (error) {
-      console.error('Error retrieving content items: ', error);
+      console.error('Error retrieving content items: ', error.response.data);
       return { error: 'An error occurred while retrieving content items.' };
     }
   },
@@ -42,7 +42,7 @@ export const kontentRepository = {
         .toPromise();
       return response.data;
     } catch (error) {
-      console.error('Error retrieving content item: ', error);
+      console.error('Error retrieving content item: ', error.response.data);
       return { error: 'An error occurred while retrieving content item.' };
     }
   }

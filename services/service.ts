@@ -21,7 +21,16 @@ export const service = {
   async getArticles(): Promise<ArticleP[]> {
     return await genericService.getArticles();
   },
-  async getItemById(id): Promise<any> {
+  async getTestimonials() {
+    return await genericService.getTestimonials();
+  },
+  async getCards() {
+    return await genericService.getCards();
+  },
+  async getCTAs() {
+    return await genericService.getCTAs();
+  },
+  async getItemById(id) {
     return await genericService.getItemById(id);
   },
 };

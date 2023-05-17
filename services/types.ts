@@ -11,12 +11,13 @@ export interface ArticleP {
   url: string;
 }
 
-export interface UserP {
-  emotion: string;
+export interface CardP {
   name: string;
   description: string;
-  title: string;
-  location: string;
-  email: string;
+  emotion?: string;
+  location?: string;
+  email?: string;
+  title?: string;
+  imageurl?: string;
   imageUrl?: string;
 }

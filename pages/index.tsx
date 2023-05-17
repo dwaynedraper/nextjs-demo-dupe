@@ -1,17 +1,13 @@
 // Next imports
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { GetStaticProps } from "next";
 
 // Components
 import Layout from "@/components/layout/Layout";
 import Article from "@/components/content/Article";
-import BlogCardGrid from "@/components/content/BlogCardGrid";
 import CardGrid from "@/components/composite/CardGrid";
 import Container from "@/components/container/Container";
 import ContainerDark from "@/components/container/ContainerDark";
-import ContainerLight from "@/components/container/ContainerLight";
 import ContainerReverse from "@/components/container/ContainerReverse";
 import CTA from "@/components/content/CTA";
 import CTADark from "@/components/content/CTADark";
@@ -22,78 +18,19 @@ import ParallaxWrapper from "@/components/container/ParallaxWrapper";
 
 // Other imports
 import logo from "@/public/arkane-square-logo.svg";
-import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
-import { ArticleP, FooterLinkP, UserP } from "@/services/types";
+import { ArticleP, FooterLinkP, CardP } from "@/services/types";
 
 interface Props {
   articles: ArticleP[];
   links: FooterLinkP[];
+  cards: CardP[];
 }
 
 const subheading = "Call us today for a free consultation";
 
-//Example CMS Data
-const users: UserP[] = [
-  {
-    emotion: "Focused",
-    name: "Marco Polo",
-    description:
-      "Artist, Dog Lover Graphic Designer, UI/UX Designer, & Front-end Developer",
-    title: "Lead Front-end Developer",
-    location: "Dallas, TX",
-    email: "dean.draper@arkanedigital.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjgyMzc1OTM4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080",
-  },
-  {
-    emotion: "Happy",
-    name: "Linda Martinez",
-    description: "Writer, Traveler, & Foodie",
-    title: "Content Creator",
-    location: "San Francisco, CA",
-    email: "linda.martinez@gmail.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjgyMzc1OTEz&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080",
-  },
-  {
-    emotion: "Excited",
-    name: "Elijah Flores",
-    description: "Photographer, Musician, & Skateboarder",
-    title: "Visual Artist",
-    location: "Los Angeles, CA",
-    email: "elijah.flores@outlook.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjgyMzc1OTY5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080",
-  },
-  {
-    emotion: "Inspired",
-    name: "Maggie Clark",
-    description: "Singer, Dancer, & Choreographer",
-    title: "Performing Artist",
-    location: "New York, NY",
-    email: "maggie.clark@yahoo.com",
-  },
-  {
-    emotion: "Relaxed",
-    name: "Henry Kim",
-    description: "Hiker, Camper, & Nature Lover",
-    title: "Outdoor Enthusiast",
-    location: "Seattle, WA",
-    email: "henry.kim@hotmail.com",
-  },
-  {
-    emotion: "Serious",
-    name: "Olivia Lee",
-    description: "Programmer, Gamer, & Tech Enthusiast",
-    title: "Software Engineer",
-    location: "San Diego, CA",
-    email: "olivia.lee@live.com",
-  },
-];
-
-export default function Home({ articles, links }: Props): React.ReactElement {
+export default function Home({ articles, links, cards }: Props): React.ReactElement {
   return (
     <div>
       <Head>
@@ -138,7 +75,7 @@ export default function Home({ articles, links }: Props): React.ReactElement {
           </ContainerReverse>
         </ParallaxWrapper>
         <Container>
-          <CardGrid type='user details' users={users} />
+          <CardGrid type='user details' users={cards} />
         </Container>
       </Layout>
     </div>
@@ -148,11 +85,13 @@ export default function Home({ articles, links }: Props): React.ReactElement {
 export async function getStaticProps() {
   const links = await service.getFooterLinks();
   const articles = await service.getArticles();
+  const cards = await service.getCards();
 
   return {
     props: {
       links,
-      articles
+      articles,
+      cards,
     }
   };
 }
