@@ -1,4 +1,4 @@
-import { UserP } from "@/services/types";
+import { CardP } from "@/services/types";
 import React, { lazy, Suspense } from "react";
 
 const CardUser = lazy(() => import("@/components/composite/CardUser"));
@@ -8,7 +8,7 @@ const CardUserDetails = lazy(() =>
 
 interface CardGridProps {
   type: "user" | "user details";
-  users: UserP[];
+  users: CardP[];
 }
 
 type CardComponent = React.ElementType;
