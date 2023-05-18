@@ -104,7 +104,7 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
                   key={columnIdx}
                   className={classNames(
                     (columnGroupIdx === 0 && columnIdx === 0) ||
-                      (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1)
+                      (columnGroupIdx === testimonialList.length - 1 && columnIdx === columnGroup.length - 1)
                       ? 'xl:row-span-2'
                       : 'xl:row-start-1',
                     'space-y-8'
