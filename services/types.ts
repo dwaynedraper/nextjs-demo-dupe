@@ -21,3 +21,12 @@ export interface CardP {
   imageurl?: string;
   imageUrl?: string;
 }
+
+export interface TestimonialP {
+  body: string;
+  author: {
+    name: string;
+    handle: string;
+    imageUrl: string;
+  };
+}
