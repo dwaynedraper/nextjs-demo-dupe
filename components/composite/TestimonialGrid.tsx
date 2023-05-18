@@ -30,9 +30,10 @@ function classNames(...classes) {
  * @returns JSX.Element with a responsive grid of testimonials with one featured testimonial
  */
 export default function TestimonialGrid({ testimonials }: TestimonialGridProps): React.ReactElement {
+  const newTestimonials: TestimonialP[] = [...testimonials];
   // Split testimonials array in half, then in half again for the layout
   // [[[1],[2]], [[3],[4]]] <-- final result is structured like this
-  function splitArray(inputArray) {
+  function splitArray(inputArray): TestimonialP[][][] {
       const midPoint = Math.ceil(inputArray.length / 2);
       const firstHalf = inputArray.slice(0, midPoint);
       const secondHalf = inputArray.slice(midPoint);
@@ -42,7 +43,7 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
       const midPoint = Math.ceil(halfArray.length / 2);
       return [halfArray.slice(0, midPoint), halfArray.slice(midPoint)];
   }
-  testimonials = splitArray(testimonials);
+  const testimonialList: TestimonialP[][][] = splitArray(newTestimonials);
 
   return (
     <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
@@ -96,7 +97,7 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
               <Image className="h-10 w-auto flex-none" src={logoipsum} alt="logo" />
             </figcaption>
           </figure>
-          {testimonials.map((columnGroup, columnGroupIdx) => (
+          {testimonialList.map((columnGroup, columnGroupIdx) => (
             <div key={columnGroupIdx} className="space-y-8 xl:contents xl:space-y-0">
               {columnGroup.map((column, columnIdx) => (
                 <div
