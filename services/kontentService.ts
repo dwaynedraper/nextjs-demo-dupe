@@ -25,6 +25,19 @@ function parseItem(item) {
   return parsedItem;
 }
 
+function convertUserObjects(userObjects) {
+  return userObjects.map(userObject => {
+    return {
+      body: userObject.user_testimonial,
+      author: {
+        name: userObject.user_name,
+        handle: userObject.user_title,
+        imageUrl: userObject.avatar_url,
+      },
+    };
+  });
+}
+
 function parseResponse(response) {
   if (response.items) {
     return response.items.map(item => parseItem(item));
@@ -65,8 +78,9 @@ export const kontentService = {
   },
 
   async getTestimonials() {
-    const data = (await kontentRepository.getItems('testimonial')).items;
-    return parseResponse(data);
+    let data = (await kontentRepository.getItems('testimonial')).items;
+    data = parseResponse(data);
+    return convertUserObjects(data);
   },
 
   async getCards(): Promise<CardP[]> {

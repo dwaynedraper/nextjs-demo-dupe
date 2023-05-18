@@ -15,22 +15,24 @@ import FiftyFifty from "@/components/composite/FiftyFifty";
 import Hero from "@/components/container/Hero";
 import ImageBounce from "@/components/content/ImageBounce";
 import ParallaxWrapper from "@/components/container/ParallaxWrapper";
+import TestimonialGrid from "@/components/composite/TestimonialGrid";
 
 // Other imports
 import logo from "@/public/arkane-square-logo.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
-import { ArticleP, FooterLinkP, CardP } from "@/services/types";
+import { ArticleP, FooterLinkP, CardP, TestimonialP } from "@/services/types";
 
 interface Props {
   articles: ArticleP[];
   links: FooterLinkP[];
   cards: CardP[];
+  testimonials: TestimonialP[];
 }
 
 const subheading = "Call us today for a free consultation";
 
-export default function Home({ articles, links, cards }: Props): React.ReactElement {
+export default function Home({ articles, links, cards, testimonials }: Props): React.ReactElement {
   return (
     <div>
       <Head>
@@ -52,6 +54,7 @@ export default function Home({ articles, links, cards }: Props): React.ReactElem
             />
           </FiftyFifty>
         </Hero>
+        <TestimonialGrid testimonials={testimonials}/>
         <ContainerDark>
           <Article
             article={articles[1]}
@@ -86,12 +89,14 @@ export async function getStaticProps() {
   const links = await service.getFooterLinks();
   const articles = await service.getArticles();
   const cards = await service.getCards();
+  const testimonials = await service.getTestimonials();
 
   return {
     props: {
       links,
       articles,
       cards,
+      testimonials,
     }
   };
 }
