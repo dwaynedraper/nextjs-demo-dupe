@@ -13,7 +13,7 @@ export type FooterLink = IContentItem<{
    * Id: d3fe163a-3ea5-43ca-9588-1810c35dbf25
    * Codename: display_name
    */
-  display_name: Elements.TextElement;
+  displayName: Elements.TextElement;
 
   /**
    * Index (url_slug)
@@ -24,16 +24,6 @@ export type FooterLink = IContentItem<{
    * This field is auto-generated from the display name and used as an index for JSX elements in React, Vue, Next.js and the like.
    */
   index: Elements.UrlSlugElement;
-
-  /**
-   * Section (multiple_choice)
-   * Required: true
-   * Id: 71d39908-7c1d-4189-8f5f-cdbc1588542c
-   * Codename: section
-   *
-   * Which header/section should the link go under in the footer?
-   */
-  section: Elements.MultipleChoiceElement;
 
   /**
    * URL (text)

@@ -15,7 +15,7 @@ export type SEOMetadataExampleToIncludeInAnyType = IContentItem<{
    *
    * This is a simple text field. It defines the description for your SEO metadata. Text fields don't store any formatting.
    */
-  seo_metadata_example_to_include_in_any_type__meta_description: Elements.TextElement;
+  seoMetadataExampleToIncludeInAnyTypeMetaDescription: Elements.TextElement;
 
   /**
    * Meta title (text)
@@ -25,5 +25,5 @@ export type SEOMetadataExampleToIncludeInAnyType = IContentItem<{
    *
    * This is a simple text field. It defines the title for your SEO metadata (and can be different than the name in Kontent.ai). Text fields don't store any formatting.
    */
-  seo_metadata_example_to_include_in_any_type__meta_title: Elements.TextElement;
+  seoMetadataExampleToIncludeInAnyTypeMetaTitle: Elements.TextElement;
 }>;

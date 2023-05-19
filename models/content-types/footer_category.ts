@@ -22,6 +22,8 @@ export type FooterCategory = IContentItem<{
    * Required: false
    * Id: 081ebd23-15c4-438a-8011-b83b1ff0f0b8
    * Codename: title
+   *
+   * The display name for the category.
    */
   title: Elements.TextElement;
 }>;
