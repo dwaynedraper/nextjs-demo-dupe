@@ -13,6 +13,7 @@ const featuredTestimonial = {
     logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-brand-900.svg',
   },
 }
+
 interface TestimonialGridProps {
   testimonials: TestimonialP[];
 }
@@ -21,27 +22,32 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+function removePTags(str) {
+  const regex = /<p[^>]*>(.*?)<\/p>/g;
+  return str.replace(regex, "$1");
+}
+
 /**
  * TestimonialGrid displays a responsive grid of testimonials with one featured testimonial.
  * TestimonialGrid should NOT be wrapped in a container element. This is one of the only
  * components that should be used as-is, without a container. The layout is self-contained.
  * TestimonialGrid expects a minimum of 4 testimonials, and will render very poorly if less.
  * @param {array} testimonials Array of testimonials (minimum of 4)
- * @returns JSX.Element with a responsive grid of testimonials with one featured testimonial
+ * @returns React.ReactElement with a responsive grid of testimonials with one featured testimonial
  */
 export default function TestimonialGrid({ testimonials }: TestimonialGridProps): React.ReactElement {
   const newTestimonials: TestimonialP[] = [...testimonials];
   // Split testimonials array in half, then in half again for the layout
   // [[[1],[2]], [[3],[4]]] <-- final result is structured like this
   function splitArray(inputArray): TestimonialP[][][] {
-      const midPoint = Math.ceil(inputArray.length / 2);
-      const firstHalf = inputArray.slice(0, midPoint);
-      const secondHalf = inputArray.slice(midPoint);
-      return [splitHalf(firstHalf), splitHalf(secondHalf)];
+    const midPoint = Math.ceil(inputArray.length / 2);
+    const firstHalf = inputArray.slice(0, midPoint);
+    const secondHalf = inputArray.slice(midPoint);
+    return [splitHalf(firstHalf), splitHalf(secondHalf)];
   }
   function splitHalf(halfArray) {
-      const midPoint = Math.ceil(halfArray.length / 2);
-      return [halfArray.slice(0, midPoint), halfArray.slice(midPoint)];
+    const midPoint = Math.ceil(halfArray.length / 2);
+    return [halfArray.slice(0, midPoint), halfArray.slice(midPoint)];
   }
   const testimonialList: TestimonialP[][][] = splitArray(newTestimonials);
 
@@ -75,7 +81,7 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-xl font-semibold leading-8 tracking-tight text-primary">Testimonials</h2>
           <p className="mt-2 text-2xl font-bold tracking-tight text-brand-900 sm:text-4xl">
-            Exceptional service,<br/>delighted customers<br />
+            Exceptional service,<br />delighted customers<br />
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-brand-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
@@ -116,7 +122,7 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
                       className="rounded-lg bg-white p-6 shadow-lg ring-1 ring-brand-900/5"
                     >
                       <blockquote className="text-brand-900">
-                        <p>{`“${testimonial.body}”`}</p>
+                        <p>{`“${removePTags(testimonial.body)}”`}</p>
                       </blockquote>
                       <figcaption className="mt-6 flex items-center gap-x-4">
                         {/* <img className="h-10 w-10 rounded-full bg-brand-lighter" src={testimonial.author.imageUrl} alt="" /> */}

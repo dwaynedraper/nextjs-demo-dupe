@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface CardUserProps {
   name?: string;
@@ -13,8 +14,7 @@ export default function CardUser({
 }: CardUserProps): React.ReactElement {
   return (
     <div className='w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800'>
-      <img className='object-cover w-full h-56' src={imageUrl} alt='avatar' />
-
+      <Image className='object-cover w-full h-56' height={224} width={336} src={imageUrl} alt='avatar' />
       <div className='py-5 text-center'>
         <a
           href='#'
