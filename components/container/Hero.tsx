@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { FaArrowCircleDown } from "react-icons/fa";
 import { BsChevronCompactDown } from "react-icons/bs";
 
 interface HeroProps {

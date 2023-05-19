@@ -63,14 +63,16 @@ export default function Navbar() {
               Services
               <FiChevronDown className='inline-block ml-1 font-semibold' />
             </li>
-            <li onMouseEnter={() => handleMouseLeave()}>About</li>
+            <Link href={"/about"}>
+              <li onMouseEnter={() => handleMouseLeave()}>About</li>
+            </Link>
             <li onMouseEnter={() => handleMouseEnter("menu3")}>
               Multi-Level
               <FiChevronDown className='inline-block ml-1 font-semibold' />
             </li>
           </ul>
         </div>
-        <div className='ml-auto hidden lg:block'>
+        <div className='ml-auto hidden xl:block'>
           <input
             className='bg-brand-lighter text-brand-dark px-4 py-2 rounded'
             type='search'

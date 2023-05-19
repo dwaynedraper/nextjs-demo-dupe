@@ -10,7 +10,7 @@ interface FiftyFiftyProps {
  * in the components\content folder to use as a child of this component.
  * @returns A layout element with two children, each taking up
  */
-export default function FiftyFifty({ children }: FiftyFiftyProps): JSX.Element {
+export default function FiftyFifty({ children }: FiftyFiftyProps): React.ReactElement {
   const childrenArray: React.ReactNode[] = React.Children.toArray(children);
   return (
     <>

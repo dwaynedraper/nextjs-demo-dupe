@@ -30,3 +30,10 @@ export interface TestimonialP {
     imageUrl: string;
   };
 }
+
+export interface CTAP {
+  heading: string;
+  subheading: string;
+  button_text: string;
+  button_href: string;
+}

@@ -1,7 +1,7 @@
 import { kontentRepository } from "@/repositories/kontentRepository";
 import { FooterLink } from "@/models/content-types/footer_link";
 import { Article } from "@/models/content-types/article";
-import { ArticleP, FooterLinkP, CardP } from "@/services/types";
+import { ArticleP, FooterLinkP, CardP, TestimonialP } from "@/services/types";
 
 function parseItem(item) {
   const parsedItem = {};
@@ -21,11 +21,18 @@ function parseItem(item) {
       parsedItem[key] = value;
     }
   }
-
   return parsedItem;
 }
 
-function convertUserObjects(userObjects) {
+function parseResponse(response) {
+  if (response.items) {
+    return response.items.map(item => parseItem(item));
+  } else {
+    return response.map(item => parseItem(item));
+  }
+}
+
+function convertUserObjects(userObjects): TestimonialP[] {
   return userObjects.map(userObject => {
     return {
       body: userObject.user_testimonial,
@@ -36,14 +43,6 @@ function convertUserObjects(userObjects) {
       },
     };
   });
-}
-
-function parseResponse(response) {
-  if (response.items) {
-    return response.items.map(item => parseItem(item));
-  } else {
-    return response.map(item => parseItem(item));
-  }
 }
 
 export const kontentService = {
@@ -77,7 +76,7 @@ export const kontentService = {
     return articles;
   },
 
-  async getTestimonials() {
+  async getTestimonials(): Promise<TestimonialP[]> {
     let data = (await kontentRepository.getItems('testimonial')).items;
     data = parseResponse(data);
     return convertUserObjects(data);
@@ -88,13 +87,14 @@ export const kontentService = {
     return parseResponse(data);
   },
 
-  async getCTAs() {
+  async getCTAs(): Promise<CardP[]> {
     const data = (await kontentRepository.getItems('cta')).items;
     return parseResponse(data);
   },
 
   async getItemById(id) {
     const results = await kontentRepository.getItemByCodename(id);
-    return results;
+    console.log('results', results)
+    return parseResponse([results])[0];
   },
 };

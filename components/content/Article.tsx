@@ -1,11 +1,12 @@
 import React from 'react'
+
 import { ArticleP } from '@/services/types'
 
 interface ArticleProps {
   article: ArticleP;
 }
 
-export default function Article({ article }) {
+export default function Article({ article }: ArticleProps): React.ReactElement {
   return (
     <div className="container my-24 px-6 mx-auto">
       <section className="mb-32 text-gray-800">
