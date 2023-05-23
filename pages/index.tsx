@@ -53,7 +53,7 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
         <TestimonialGrid testimonials={testimonials} />
         <Container>
           <Article
-            article={articles[1]}
+            article={articles[0]}
           />
         </Container>
       </Layout>
@@ -62,10 +62,12 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
 }
 
 export async function getStaticProps() {
-  const links = await service.getFooterLinks();
-  const articles = await service.getArticles();
-  const testimonials = await service.getTestimonials();
-  const ctas = await service.getCTAs();
+  const [links, articles, testimonials, ctas] = await Promise.all([
+    await service.getFooterLinks(),
+    await service.getArticles(),
+    await service.getTestimonials(),
+    await service.getCTAs()
+  ]);
 
   return {
     props: {

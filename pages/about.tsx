@@ -53,8 +53,10 @@ export default function About({ links, cards }) {
 }
 
 export async function getStaticProps() {
-  const links = await service.getFooterLinks();
-  const cards = await service.getCards();
+  const [links, cards] = await Promise.all([
+    service.getFooterLinks(),
+    service.getCards()
+  ]);
 
   return {
     props: {

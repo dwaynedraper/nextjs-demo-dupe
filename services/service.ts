@@ -30,6 +30,9 @@ export const service = {
   async getCTAs() {
     return await genericService.getCTAs();
   },
+  async getBlogPosts() {
+    return await genericService.getBlogPosts();
+  },
   async getItemById(id) {
     return await genericService.getItemById(id);
   },

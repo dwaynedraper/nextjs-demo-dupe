@@ -37,3 +37,12 @@ export interface CTAP {
   button_text: string;
   button_href: string;
 }
+
+export interface BlogPostP {
+  title: string;
+  subheading?: string;
+  body: string;
+  url: string;
+  author: any;
+  codename: string;
+}

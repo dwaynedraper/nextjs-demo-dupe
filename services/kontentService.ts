@@ -1,7 +1,7 @@
 import { kontentRepository } from "@/repositories/kontentRepository";
 import { FooterLink } from "@/models/content-types/footer_link";
 import { Article } from "@/models/content-types/article";
-import { ArticleP, FooterLinkP, CardP, TestimonialP } from "@/services/types";
+import { ArticleP, FooterLinkP, CardP, CTAP, TestimonialP } from "@/services/types";
 
 function parseItem(item) {
   const parsedItem = {};
@@ -21,6 +21,9 @@ function parseItem(item) {
       parsedItem[key] = value;
     }
   }
+
+  if (item.system?.codename) parsedItem['codename'] = item.system.codename;
+
   return parsedItem;
 }
 
@@ -87,8 +90,13 @@ export const kontentService = {
     return parseResponse(data);
   },
 
-  async getCTAs(): Promise<CardP[]> {
+  async getCTAs(): Promise<CTAP[]> {
     const data = (await kontentRepository.getItems('cta')).items;
+    return parseResponse(data);
+  },
+
+  async getBlogPosts(): Promise<ArticleP[]> {
+    const data = (await kontentRepository.getItems('blog_post')).items;
     return parseResponse(data);
   },
 
