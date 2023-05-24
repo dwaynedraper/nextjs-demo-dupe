@@ -1,5 +1,5 @@
 import { kontentService } from "@/services/kontentService"
-import { FooterLinkP, ArticleP } from "@/services/types";
+import { FooterLinkP, ArticleP, BlogPostP, TestimonialP, CTAP, CardP } from "@/services/types";
 
 const contentProvider: string = process.env.CONTENT_PROVIDER;
 
@@ -21,19 +21,20 @@ export const service = {
   async getArticles(): Promise<ArticleP[]> {
     return await genericService.getArticles();
   },
-  async getTestimonials() {
+  async getTestimonials(): Promise<TestimonialP[]> {
     return await genericService.getTestimonials();
   },
-  async getCards() {
+  async getCards(): Promise<CardP[]> {
     return await genericService.getCards();
   },
-  async getCTAs() {
+  async getCTAs(): Promise<CTAP[]> {
     return await genericService.getCTAs();
   },
-  async getBlogPosts() {
+  async getBlogPosts(): Promise<BlogPostP[]> {
     return await genericService.getBlogPosts();
   },
-  async getItemById(id) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async getItemById(id): Promise<any[]> {
     return await genericService.getItemById(id);
   },
 };
