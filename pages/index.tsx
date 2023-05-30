@@ -15,6 +15,7 @@ import TestimonialGrid from "@/components/composite/TestimonialGrid";
 
 // Other imports
 import logo from "@/public/arkane-square-logo.svg";
+import logoWhite from "@/public/arkane-square-logo-white.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
 import { ArticleP, FooterLinkP, TestimonialP, CTAP } from "@/services/types";
@@ -60,7 +61,7 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
               buttonHref={ctas[1].button_href}
             />
             <ImageBounce
-              src={logo}
+              src={logoWhite}
               alt='Arkane Logo'
               className={`${styles.bounce} mx-auto flex justify-center`}
             />
