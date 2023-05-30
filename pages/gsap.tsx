@@ -14,6 +14,7 @@ import { ScrambleTextPlugin } from 'gsap/dist/ScrambleTextPlugin'
 import styles from '@/styles/GSAP.module.scss'
 import Link from 'next/link';
 import ContainerDark from '@/components/container/ContainerDark';
+import FiftyFifty from '@/components/composite/FiftyFifty';
 // import { GSDevTools } from 'gsap/GSDevTools';
 
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -52,7 +53,7 @@ export default function GSAP({ links }: GSAPProps): React.ReactElement {
         bgImageUrl='https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=710&q=80'
       >
 
-        <div ref={box} className='mx-auto'>
+        <div ref={box} className='mx-auto min-h-screen'>
           <div className='mx-auto pt-12 text-center'>
             <span className='text-primary text-8xl font-extrabold inline-block left'>Strategy&nbsp;</span>
             <span className='text-blue-700 text-8xl font-extrabold inline-block right'>First</span>
@@ -76,6 +77,12 @@ export default function GSAP({ links }: GSAPProps): React.ReactElement {
           </div>
         </div>
       </Container>
+      <ContainerLight>
+        <FiftyFifty animate>
+          <div>fkdsklfdsl</div>
+          <div>fkdsklfdsl</div>
+        </FiftyFifty>
+      </ContainerLight>
     </Layout>
   )
 }

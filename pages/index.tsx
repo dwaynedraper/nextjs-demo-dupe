@@ -6,6 +6,7 @@ import Head from "next/head";
 import Layout from "@/components/layout/Layout";
 import Article from "@/components/content/Article";
 import Container from "@/components/container/Container";
+import CTA from "@/components/content/CTA";
 import CTADark from "@/components/content/CTADark";
 import FiftyFifty from "@/components/composite/FiftyFifty";
 import Hero from "@/components/container/Hero";
@@ -17,6 +18,7 @@ import logo from "@/public/arkane-square-logo.svg";
 import styles from "@/styles/Home.module.scss";
 import { service } from "@/services/service";
 import { ArticleP, FooterLinkP, TestimonialP, CTAP } from "@/services/types";
+import ContainerDark from "@/components/container/ContainerDark";
 
 interface Props {
   articles: ArticleP[];
@@ -50,6 +52,21 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
             />
           </FiftyFifty>
         </Hero>
+        <ContainerDark>
+          <FiftyFifty animate={true}>
+            <CTA
+              heading={ctas[1].heading}
+              subheading={ctas[1].subheading}
+              buttonText={ctas[1].button_text}
+              buttonHref={ctas[1].button_href}
+            />
+            <ImageBounce
+              src={logo}
+              alt='Arkane Logo'
+              className={`${styles.bounce} mx-auto flex justify-center`}
+            />
+          </FiftyFifty>
+        </ContainerDark>
         <TestimonialGrid testimonials={testimonials} />
         <Container>
           <Article

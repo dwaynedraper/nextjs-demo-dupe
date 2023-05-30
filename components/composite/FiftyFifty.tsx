@@ -1,21 +1,63 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 interface FiftyFiftyProps {
   children?: [React.ReactNode, React.ReactNode];
+  animate?: boolean;
 }
 
-/**
- * This component is meant to be a direct child of Container, ContainerDark, ContainerReverse, or ContainerReverseDark.
- * It is a container for pieces of content. It is recommended to use or create a component
- * in the components\content folder to use as a child of this component.
- * @returns A layout element with two children, each taking up
- */
-export default function FiftyFifty({ children }: FiftyFiftyProps): React.ReactElement {
+export default function FiftyFifty({ animate, children }: FiftyFiftyProps): React.ReactElement {
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!animate) return;
+
+    gsap.fromTo(
+      leftRef.current,
+      {
+        opacity: 0,
+        x: -100,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: leftRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "restart none none none",
+        },
+      }
+    );
+    gsap.fromTo(
+      rightRef.current,
+      {
+        opacity: 0,
+        x: 100,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: rightRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "restart none none none",
+        },
+      }
+    );
+  }, [animate]);
+
   const childrenArray: React.ReactNode[] = React.Children.toArray(children);
   return (
     <>
-      <div className='w-full md:w-1/2'>{childrenArray[0]}</div>
-      <div className='w-full md:w-1/2'>{childrenArray[1]}</div>
+      <div ref={leftRef} className='w-full md:w-1/2 item-left'>{childrenArray[0]}</div>
+      <div ref={rightRef} className='w-full md:w-1/2 item-right'>{childrenArray[1]}</div>
     </>
   );
 }

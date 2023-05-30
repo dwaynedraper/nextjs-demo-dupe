@@ -2,6 +2,7 @@ import React from 'react';
 import logoipsum from '@/public/logoipsum.svg';
 import Image from 'next/image';
 import { TestimonialP } from '@/services/types';
+import { gsap } from 'gsap';
 
 const featuredTestimonial = {
   body: 'Working with Arkane Digital has been an absolute game-changer for our business. Their expertise in headless CMSes has transformed the way we manage our content and deliver seamless experiences to our customers. We are grateful for their partnership and would highly recommend Arkane Digital to anyone seeking top-notch software consultancy services.',
@@ -50,6 +51,18 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
     return [halfArray.slice(0, midPoint), halfArray.slice(midPoint)];
   }
   const testimonialList: TestimonialP[][][] = splitArray(newTestimonials);
+
+  function increaseShadow(e) {
+    if (e.target === e.currentTarget) {
+      gsap.to(e.target, { boxShadow: '1px 1px 20px 3px rgba(0, 0, 0, 0.5)', duration: 0.3, overwrite: "auto" })
+    }
+  }
+
+  function revertShadow(e) {
+    if (e.target === e.currentTarget) {
+      gsap.to(e.target, { boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1)", duration: 0.3, overwrite: "auto" })
+    }
+  }
 
   return (
     <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
@@ -120,6 +133,8 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
                     <figure
                       key={testimonial.author.handle}
                       className="rounded-lg bg-white p-6 shadow-lg ring-1 ring-brand-900/5"
+                      onMouseEnter={increaseShadow}
+                      onMouseLeave={revertShadow}
                     >
                       <blockquote className="text-brand-900">
                         <p>{`“${removePTags(testimonial.body)}”`}</p>
