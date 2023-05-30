@@ -24,7 +24,8 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
       {
         opacity: 1,
         x: 0,
-        duration: 3,
+        duration: 1.5,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: leftRef.current,
           start: "top 90%",
@@ -42,7 +43,8 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
       {
         opacity: 1,
         x: 0,
-        duration: 3,
+        duration: 1.5,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: rightRef.current,
           start: "top 90%",
