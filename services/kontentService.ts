@@ -102,7 +102,6 @@ export const kontentService = {
 
   async getItemById(id) {
     const results = await kontentRepository.getItemByCodename(id);
-    console.log('results', results)
     return parseResponse([results])[0];
   },
 };

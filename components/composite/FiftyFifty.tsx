@@ -24,10 +24,10 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
       {
         opacity: 1,
         x: 0,
-        duration: 1.5,
+        duration: 3,
         scrollTrigger: {
           trigger: leftRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           toggleActions: "restart none none none",
         },
@@ -42,10 +42,10 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
       {
         opacity: 1,
         x: 0,
-        duration: 1.5,
+        duration: 3,
         scrollTrigger: {
           trigger: rightRef.current,
-          start: "top 80%",
+          start: "top 90%",
           end: "bottom 20%",
           toggleActions: "restart none none none",
         },
@@ -56,8 +56,8 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
   const childrenArray: React.ReactNode[] = React.Children.toArray(children);
   return (
     <>
-      <div ref={leftRef} className='w-full md:w-1/2 item-left'>{childrenArray[0]}</div>
-      <div ref={rightRef} className='w-full md:w-1/2 item-right'>{childrenArray[1]}</div>
+      <div ref={leftRef} className='w-full md:w-1/2'>{childrenArray[0]}</div>
+      <div ref={rightRef} className='w-full md:w-1/2'>{childrenArray[1]}</div>
     </>
   );
 }

@@ -28,7 +28,6 @@ interface Props {
 }
 
 export default function Home({ articles, ctas, links, testimonials }: Props): React.ReactElement {
-  console.log('ctas', ctas)
   return (
     <div>
       <Head>
