@@ -63,7 +63,7 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
             <ImageBounce
               src={logoWhite}
               alt='Arkane Logo'
-              className={`${styles.bounce} mx-auto flex justify-center`}
+              className={`mx-auto flex justify-center`}
             />
           </FiftyFifty>
         </ContainerDark>

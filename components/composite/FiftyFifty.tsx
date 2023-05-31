@@ -6,14 +6,23 @@ gsap.registerPlugin(ScrollTrigger);
 interface FiftyFiftyProps {
   children?: [React.ReactNode, React.ReactNode];
   animate?: boolean;
+  scrub?: boolean;
 }
 
-export default function FiftyFifty({ animate, children }: FiftyFiftyProps): React.ReactElement {
+export default function FiftyFifty({ animate, children, scrub = false }: FiftyFiftyProps): React.ReactElement {
   const leftRef = useRef(null);
   const rightRef = useRef(null);
 
   useLayoutEffect(() => {
     if (!animate) return;
+
+    const scrollTriggerOptions = {
+      trigger: leftRef.current,
+      start: "top 70%",
+      end: "bottom 40%",
+      toggleActions: "restart none none none",
+      scrub: scrub,
+    };
 
     gsap.fromTo(
       leftRef.current,
@@ -26,12 +35,7 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
         x: 0,
         duration: 1.5,
         ease: "power4.out",
-        scrollTrigger: {
-          trigger: leftRef.current,
-          start: "top 90%",
-          end: "bottom 20%",
-          toggleActions: "restart none none none",
-        },
+        scrollTrigger: scrollTriggerOptions,
       }
     );
     gsap.fromTo(
@@ -45,12 +49,7 @@ export default function FiftyFifty({ animate, children }: FiftyFiftyProps): Reac
         x: 0,
         duration: 1.5,
         ease: "power4.out",
-        scrollTrigger: {
-          trigger: rightRef.current,
-          start: "top 90%",
-          end: "bottom 20%",
-          toggleActions: "restart none none none",
-        },
+        scrollTrigger: scrollTriggerOptions,
       }
     );
   }, [animate]);
