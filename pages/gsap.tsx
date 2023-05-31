@@ -10,7 +10,6 @@ import CTADark from '@/components/content/CTADark';
 import FiftyFifty from '@/components/composite/FiftyFifty';
 import ImageBounce from '@/components/content/ImageBounce';
 import Layout from '@/components/layout/Layout';
-import ParallaxSection from '@/components/container/ParallaxSection';
 
 // Other imports
 import { service } from '@/services/service';
