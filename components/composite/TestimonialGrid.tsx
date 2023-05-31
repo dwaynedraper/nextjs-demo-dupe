@@ -53,16 +53,17 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
   const testimonialList: TestimonialP[][][] = splitArray(newTestimonials);
 
   function increaseShadow(e) {
-    if (e.target === e.currentTarget) {
-      gsap.to(e.target, { boxShadow: '1px 1px 20px 3px rgba(0, 0, 0, 0.5)', duration: 0.3, overwrite: "auto" })
+    if (e.relatedTarget === null || !e.currentTarget.contains(e.relatedTarget)) {
+      gsap.to(e.currentTarget, { boxShadow: '1px 1px 20px 3px rgba(0, 0, 0, 0.5)', duration: 0.3, overwrite: "auto" })
     }
   }
 
   function revertShadow(e) {
-    if (e.target === e.currentTarget) {
-      gsap.to(e.target, { boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1)", duration: 0.3, overwrite: "auto" })
+    if (e.relatedTarget === null || !e.currentTarget.contains(e.relatedTarget)) {
+      gsap.to(e.currentTarget, { boxShadow: "0px 10px 15px -3px rgba(0, 0, 0, 0.1)", duration: 0.3, overwrite: "auto" })
     }
   }
+
 
   return (
     <div className="relative isolate bg-white pb-32 pt-24 sm:pt-32">
@@ -98,7 +99,9 @@ export default function TestimonialGrid({ testimonials }: TestimonialGridProps):
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-brand-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
-          <figure className="col-span-2 hidden sm:block sm:rounded-lg sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-brand-900/5 xl:col-start-2 xl:row-end-1">
+          <figure className="col-span-2 hidden sm:block sm:rounded-lg sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-brand-900/5 xl:col-start-2 xl:row-end-1"
+            onMouseEnter={increaseShadow}
+            onMouseLeave={revertShadow}>
             <blockquote className="p-12 text-xl font-semibold leading-8 tracking-tight text-brand-900">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
