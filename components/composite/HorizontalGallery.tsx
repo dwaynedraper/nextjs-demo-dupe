@@ -11,7 +11,7 @@ export default function HorizontalGallery() {
   const skills = useRef();
 
   useEffect(() => {
-    const skillSet = gsap.utils.toArray('.skill-set');
+    const skillSet = gsap.utils.toArray('.skill-set'); // converts the NodeList from the query selector '.skill-set' into an array.
 
     const to = gsap.to(skillSet, {
       xPercent: () => -100 * (skillSet.length - 1),
@@ -41,7 +41,7 @@ export default function HorizontalGallery() {
         <div
           id="skills"
           ref={scroller}
-          className=" flex overflow-x-hidden text-white w-[400vw] m-0 bg-brand-light  relative h-screen"
+          className=" flex overflow-x-hidden text-white w-[400vw] m-0  relative h-screen"
         >
           <section
             ref={skills}
@@ -52,7 +52,7 @@ export default function HorizontalGallery() {
               alt="1st image"
               layout="fill"
               objectFit="contain"
-              className="max-w-[70vw] max-h-[60vh] m-auto"
+              className="max-w-[90vw] max-h-[80vh] m-auto"
             />
           </section>
           <section
@@ -64,7 +64,7 @@ export default function HorizontalGallery() {
               alt="2ndimage"
               layout="fill"
               objectFit="contain"
-              className="max-w-[70vw] max-h-[60vh] m-auto"
+              className="max-w-[90vw] max-h-[80vh] m-auto"
             />
           </section>
           <section
@@ -76,7 +76,7 @@ export default function HorizontalGallery() {
               alt="3rdimage"
               layout="fill"
               objectFit="contain"
-              className="max-w-[70vw] max-h-[60vh] m-auto"
+              className="max-w-[90vw] max-h-[80vh] m-auto"
             />
           </section>
           <section
@@ -88,7 +88,7 @@ export default function HorizontalGallery() {
               alt="4thimage"
               layout="fill"
               objectFit="contain"
-              className="max-w-[70vw] max-h-[60vh] m-auto"
+              className="max-w-[90vw] max-h-[80vh] m-auto"
             />
           </section>
         </div>
