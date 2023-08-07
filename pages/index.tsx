@@ -52,6 +52,12 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
             />
           </FiftyFifty>
         </Hero>
+        <TestimonialGrid testimonials={testimonials} />
+        <Container>
+          <Article
+            article={articles[0]}
+          />
+        </Container>
         <ContainerDark>
           <FiftyFifty animate={true}>
             <CTA
@@ -67,12 +73,6 @@ export default function Home({ articles, ctas, links, testimonials }: Props): Re
             />
           </FiftyFifty>
         </ContainerDark>
-        <TestimonialGrid testimonials={testimonials} />
-        <Container>
-          <Article
-            article={articles[0]}
-          />
-        </Container>
       </Layout>
     </div>
   );
